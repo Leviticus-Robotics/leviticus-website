@@ -1,0 +1,51 @@
+---
+import Card from "../components/ui/Card.astro";
+import DisplayHeading from "../components/ui/DisplayHeading.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Grid from "../components/ui/Grid.astro";
+import Lead from "../components/ui/Lead.astro";
+import PageShell from "../components/ui/PageShell.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { ContactLink } from "../types/content";
+
+const contacts: ContactLink[] = [
+	{ label: "Email", value: "hello@team36099.org", href: "mailto:hello@team36099.org" },
+	{ label: "Phone", value: "(555) 360-9900", href: "tel:+15553609900" },
+	{ label: "Instagram", value: "@ftc36099", href: "https://example.com" },
+	{ label: "YouTube", value: "FTC 36099 Leviticus", href: "https://example.com" },
+];
+---
+
+<BaseLayout
+	title="Contact"
+	description="Contact FTC team 36099 Leviticus by email, phone, or social media."
+>
+	<section aria-labelledby="contact-title">
+		<PageShell>
+			<SectionHeader>
+				<Eyebrow>Contact</Eyebrow>
+				<DisplayHeading id="contact-title">Start a conversation.</DisplayHeading>
+				<Lead>
+					Families, community partners, sponsors, and teams can use these placeholder
+					contact channels to reach Leviticus in the mockup.
+				</Lead>
+			</SectionHeader>
+			<Grid>
+				{
+					contacts.map((contact) => (
+						<Card>
+							<Eyebrow>{contact.label}</Eyebrow>
+							<h2 class="mb-0 text-[clamp(1.25rem,2.4vw,1.7rem)] leading-[1.15]">
+								<a
+									class="text-brand-purple-strong decoration-brand-purple/35 underline-offset-[0.2em]"
+									href={contact.href}>{contact.value}</a
+								>
+							</h2>
+						</Card>
+					))
+				}
+			</Grid>
+		</PageShell>
+	</section>
+</BaseLayout>

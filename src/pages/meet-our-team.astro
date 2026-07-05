@@ -1,0 +1,56 @@
+---
+import { teamMembers } from "../data/team";
+import Card from "../components/ui/Card.astro";
+import DisplayHeading from "../components/ui/DisplayHeading.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Grid from "../components/ui/Grid.astro";
+import Lead from "../components/ui/Lead.astro";
+import PageShell from "../components/ui/PageShell.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import Tag from "../components/ui/Tag.astro";
+import TagList from "../components/ui/TagList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Meet Our Team"
+	description="Meet the FTC 36099 Leviticus students, their roles, experience, and championship-level background."
+>
+	<section aria-labelledby="team-title">
+		<PageShell>
+			<SectionHeader>
+				<Eyebrow>Meet Our Team</Eyebrow>
+				<DisplayHeading id="team-title">Students behind the robot.</DisplayHeading>
+				<Lead>
+					Leviticus brings together students from FTC teams 7854 and 15385, programs
+					with experience competing at the World Championship and Premiere Events.
+					That background shapes how we build, practice, and help new teammates grow.
+				</Lead>
+			</SectionHeader>
+			<Grid class="items-stretch">
+				{
+					teamMembers.map((member) => (
+						<Card>
+							<div
+								class="mb-4 grid size-18 place-items-center rounded-full bg-linear-to-br from-brand-purple to-brand-blue text-xl font-black text-white"
+								aria-hidden="true"
+							>
+								{member.name
+									.split(" ")
+									.map((part) => part[0])
+									.join("")}
+							</div>
+							<p class="mb-1 font-extrabold text-brand-blue">{member.role}</p>
+							<h2 class="mb-3 text-2xl">{member.name}</h2>
+							<p>{member.bio}</p>
+							<h3 class="mt-5 mb-2 text-[0.95rem]">Prior experience</h3>
+							<TagList>
+								{member.experiences.map((experience) => <Tag>{experience}</Tag>)}
+							</TagList>
+						</Card>
+					))
+				}
+			</Grid>
+		</PageShell>
+	</section>
+</BaseLayout>

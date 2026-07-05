@@ -1,0 +1,21 @@
+---
+import PageShell from "./PageShell.astro";
+
+interface Props {
+	class?: string;
+	[key: string]: unknown;
+}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<section {...attrs}>
+	<PageShell
+		class:list={[
+			"grid grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] items-center gap-12 pt-12 max-[840px]:grid-cols-1",
+			className,
+		]}
+	>
+		<slot />
+	</PageShell>
+</section>

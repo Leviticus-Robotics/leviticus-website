@@ -1,0 +1,48 @@
+---
+import type { NavLink } from "../types/content";
+
+interface Props {
+	currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const links: NavLink[] = [
+	{ href: "/meet-our-team/", label: "Meet Our Team" },
+	{ href: "/mission-statement/", label: "Mission Statement" },
+	{ href: "/contact/", label: "Contact" },
+	{ href: "/sponsors/", label: "Sponsors" },
+];
+---
+
+<header
+	class="sticky top-0 z-10 flex items-center justify-between gap-6 border-b border-site-line/85 bg-white/85 px-4 py-3 backdrop-blur-[18px] min-[1184px]:px-[calc((100vw-1120px)/2)] max-[720px]:flex-col max-[720px]:items-start"
+>
+	<a
+		class="inline-flex min-w-max items-center gap-3 text-site-ink-soft no-underline"
+		href="/"
+		aria-label="FTC 36099 Leviticus home"
+	>
+		<img class="h-14 w-auto" src="/logo.png" alt="Leviticus 36099 logo" width="1536" height="1024" />
+	</a>
+	<nav aria-label="Main navigation">
+		<ul class="m-0 flex list-none flex-wrap justify-end gap-2 p-0 max-[720px]:justify-start">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							class:list={[
+								"inline-flex min-h-9 items-center rounded-full px-3 py-2 text-[0.95rem] font-extrabold text-site-nav no-underline hover:bg-site-blue-soft hover:text-brand-purple-strong",
+								currentPath === link.href && "bg-site-blue-soft text-brand-purple-strong",
+							]}
+							href={link.href}
+							aria-current={currentPath === link.href ? "page" : undefined}
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</header>

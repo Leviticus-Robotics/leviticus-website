@@ -1,0 +1,42 @@
+---
+import SiteNav from "../components/SiteNav.astro";
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | FTC 36099 Leviticus</title>
+	</head>
+	<body
+		class="bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-brand-purple)_16%,transparent),transparent_34rem),linear-gradient(135deg,var(--color-site-surface-soft)_0%,var(--color-site-surface-blue)_100%)] text-site-ink leading-[1.6]"
+	>
+		<a
+			class="fixed top-4 left-4 z-20 -translate-y-[150%] rounded-full bg-site-ink px-4 py-3 text-white no-underline transition-transform duration-150 focus:translate-y-0"
+			href="#main">Skip to main content</a
+		>
+		<SiteNav currentPath={Astro.url.pathname} />
+		<main id="main" class="min-h-[70vh]">
+			<slot />
+		</main>
+		<footer
+			class="mx-auto flex max-w-7xl justify-between gap-4 border-t border-site-line px-4 py-6 text-site-muted max-[840px]:block"
+		>
+			<p>FTC Team 36099 Leviticus</p>
+			<p>Building with purpose, competing with humility.</p>
+		</footer>
+	</body>
+</html>

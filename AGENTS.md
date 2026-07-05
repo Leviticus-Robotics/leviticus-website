@@ -19,8 +19,10 @@ The site should be treated primarily as a static marketing/content website, not 
 ## Styling
 
 - Use Tailwind as the default styling system.
+- Store reusable brand and site colors as Tailwind `@theme` tokens in `src/styles/global.css`, then use semantic utilities such as `bg-brand-purple`, `text-site-muted`, and `border-site-line` instead of hardcoded hex colors.
 - Use SCSS, not indented Sass syntax, only for overrides or cases where Tailwind is genuinely awkward.
 - Keep styling close to the component/page it supports unless a shared pattern has clearly emerged.
+- For repeated Tailwind patterns, prefer small Astro components or partials over exported class-string aliases.
 - Avoid broad global CSS unless it is for base typography, tokens, resets, or necessary integration overrides.
 
 ## Code Quality
@@ -30,9 +32,24 @@ The site should be treated primarily as a static marketing/content website, not 
 - Do not add one-off hacks, hardcoded special cases, or brittle fixes that only address the immediate symptom. Understand the underlying cause and make the smallest durable change.
 - Prefer clear data structures and content-driven rendering over repeated markup or hardcoded branching.
 - Keep components small enough to read comfortably. Split large components when separate concerns are being mixed.
-- Preserve accessibility and semantic HTML by default, especially for navigation, headings, buttons, links, media, and forms.
 - Avoid adding dependencies unless they solve a real problem and fit the established stack.
 - Keep changes scoped to the request. Do not do unrelated refactors while implementing a feature or fix.
+
+## Accessibility
+
+- Use semantic HTML by default, including page landmarks such as `header`, `nav`, `main`, `section`, `article`, `aside`, and `footer`.
+- Use native interactive elements: `button` for actions, `a` for navigation, and form controls for input. Do not use clickable `div` or `span` elements.
+- Preserve a logical heading hierarchy. Do not skip heading levels for visual styling.
+- Provide meaningful `alt` text for informative images and empty `alt` text for decorative images.
+- Label form inputs with visible labels. Do not rely on placeholders as the only label.
+- Ensure icon-only controls have accessible names, such as `aria-label`, and hide decorative icons from assistive technology.
+- Write descriptive link text that explains the destination or action.
+- Support keyboard navigation by relying on native controls and preserving visible focus states.
+- Include a skip link to the main content when adding or changing site-level layouts.
+- Use landmarks and labels, such as `aria-label` on repeated navigation regions, to make page structure clear.
+- Make tables accessible with captions and scoped headers when tabular data is necessary.
+- Provide captions, transcripts, or equivalent alternatives for meaningful audio or video content.
+- Prefer native HTML first. Use ARIA when native HTML cannot express the required role, state, relationship, or accessible name.
 
 ## Testing
 

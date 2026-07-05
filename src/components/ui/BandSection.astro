@@ -1,0 +1,19 @@
+---
+import PageShell from "./PageShell.astro";
+
+interface Props {
+	class?: string;
+	[key: string]: unknown;
+}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<section
+	class="bg-linear-to-br from-brand-purple/10 to-brand-blue/12"
+	{...attrs}
+>
+	<PageShell class={className}>
+		<slot />
+	</PageShell>
+</section>

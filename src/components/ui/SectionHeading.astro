@@ -1,0 +1,15 @@
+---
+interface Props {
+	id?: string;
+	class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<h2
+	id={id}
+	class:list={["mb-4 text-[clamp(2rem,4vw,3.25rem)] leading-none tracking-normal", className]}
+>
+	<slot />
+</h2>

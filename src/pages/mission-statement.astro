@@ -1,0 +1,65 @@
+---
+import BandSection from "../components/ui/BandSection.astro";
+import Card from "../components/ui/Card.astro";
+import DisplayHeading from "../components/ui/DisplayHeading.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Grid from "../components/ui/Grid.astro";
+import HeroSection from "../components/ui/HeroSection.astro";
+import Lead from "../components/ui/Lead.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Mission Statement"
+	description="Learn why FTC team 36099 Leviticus was created and what the team is working toward."
+>
+	<HeroSection aria-labelledby="mission-title">
+		<div>
+			<Eyebrow>Mission Statement</Eyebrow>
+			<DisplayHeading id="mission-title">Built for more than one season.</DisplayHeading>
+			<Lead>
+				Leviticus exists to give students a place to practice engineering, leadership,
+				and service through the challenge of building competitive FTC robots.
+			</Lead>
+		</div>
+		<Card class="bg-site-ink text-white">
+			<SectionHeading>Our mission</SectionHeading>
+			<p class="text-xl text-site-blue-pale">
+				We create disciplined builders: students who learn by prototyping, documenting,
+				competing, teaching, and improving together.
+			</p>
+		</Card>
+	</HeroSection>
+
+	<BandSection aria-labelledby="why-title">
+		<Grid>
+			<Card>
+				<Eyebrow>Reasons for creation</Eyebrow>
+				<SectionHeading id="why-title">A team with purpose.</SectionHeading>
+				<p>
+					Leviticus was created to make robotics more accessible, give students
+					real ownership over technical work, and build a team culture rooted in
+					accountability and service.
+				</p>
+			</Card>
+			<Card>
+				<Eyebrow>Longer term goals</Eyebrow>
+				<SectionHeading>Grow the program.</SectionHeading>
+				<p>
+					The team aims to mentor younger students, build a sustainable sponsor base,
+					document repeatable engineering practices, and compete with robots that are
+					both creative and reliable.
+				</p>
+			</Card>
+			<Card>
+				<Eyebrow>Community impact</Eyebrow>
+				<SectionHeading>Share the work.</SectionHeading>
+				<p>
+					Through demos, workshops, and outreach, Leviticus will help more students see
+					robotics as something they can understand, build, and lead.
+				</p>
+			</Card>
+		</Grid>
+	</BandSection>
+</BaseLayout>

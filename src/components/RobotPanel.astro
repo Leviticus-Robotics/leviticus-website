@@ -1,0 +1,120 @@
+<figure class="robot-panel" aria-label="Stylized robot on a competition field">
+	<div class="field">
+		<div class="robot">
+			<div class="arm"></div>
+			<div class="body">
+				<span></span>
+				<span></span>
+			</div>
+			<div class="wheels">
+				<i></i>
+				<i></i>
+			</div>
+		</div>
+		<div class="goal one"></div>
+		<div class="goal two"></div>
+	</div>
+</figure>
+
+<style>
+	.robot-panel {
+		margin: 0;
+		border: 1px solid var(--color-site-line);
+		border-radius: 8px;
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--color-brand-purple) 20%, transparent),
+				color-mix(in srgb, var(--color-brand-blue) 20%, transparent)
+			),
+			var(--color-site-surface);
+		padding: 1rem;
+		box-shadow: 0 20px 55px color-mix(in srgb, var(--color-brand-purple-strong) 15%, transparent);
+	}
+
+	.field {
+		position: relative;
+		overflow: hidden;
+		min-height: 24rem;
+		border-radius: 6px;
+		background:
+			linear-gradient(90deg, var(--color-site-surface-grid) 1px, transparent 1px),
+			linear-gradient(var(--color-site-surface-grid) 1px, transparent 1px),
+			linear-gradient(135deg, var(--color-site-field-purple), var(--color-brand-blue));
+		background-size:
+			44px 44px,
+			44px 44px,
+			100% 100%;
+	}
+
+	.robot {
+		position: absolute;
+		right: 15%;
+		bottom: 18%;
+		width: 12rem;
+		transform: rotate(-7deg);
+	}
+
+	.arm {
+		position: absolute;
+		right: 1.5rem;
+		bottom: 7rem;
+		width: 8.5rem;
+		height: 0.8rem;
+		border-radius: 999px;
+		background: var(--color-brand-gold);
+		transform: rotate(-35deg);
+		transform-origin: right center;
+	}
+
+	.body {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.8rem;
+		border: 4px solid var(--color-site-surface-border);
+		border-radius: 1rem;
+		background: linear-gradient(135deg, var(--color-site-surface), var(--color-site-blue-pale));
+		padding: 1.4rem;
+	}
+
+	.body span {
+		height: 4rem;
+		border-radius: 0.65rem;
+		background: linear-gradient(180deg, var(--color-brand-purple), var(--color-brand-blue));
+	}
+
+	.wheels {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 1rem;
+	}
+
+	.wheels i {
+		display: block;
+		width: 3.4rem;
+		height: 3.4rem;
+		border: 0.55rem solid var(--color-site-ink);
+		border-radius: 999px;
+		background: var(--color-site-muted);
+	}
+
+	.goal {
+		position: absolute;
+		border-radius: 999px;
+		background: var(--color-site-surface-glass);
+	}
+
+	.goal.one {
+		top: 12%;
+		left: 12%;
+		width: 5rem;
+		height: 5rem;
+	}
+
+	.goal.two {
+		right: 10%;
+		bottom: 12%;
+		width: 3.5rem;
+		height: 3.5rem;
+	}
+</style>

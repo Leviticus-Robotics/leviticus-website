@@ -1,0 +1,59 @@
+---
+import { sponsors } from "../data/team";
+import Actions from "../components/ui/Actions.astro";
+import ButtonLink from "../components/ui/ButtonLink.astro";
+import Card from "../components/ui/Card.astro";
+import DisplayHeading from "../components/ui/DisplayHeading.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Grid from "../components/ui/Grid.astro";
+import Lead from "../components/ui/Lead.astro";
+import PageShell from "../components/ui/PageShell.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Sponsors"
+	description="See FTC team 36099 Leviticus sponsors and learn how to apply as a sponsor."
+>
+	<section aria-labelledby="sponsors-title">
+		<PageShell>
+			<SectionHeader>
+				<Eyebrow>Sponsors</Eyebrow>
+				<DisplayHeading id="sponsors-title">Partners who power the team.</DisplayHeading>
+				<Lead>
+					This mockup shows how current sponsors will be recognized and how future
+					sponsors can apply through a Google Form.
+				</Lead>
+				<Actions>
+					<ButtonLink href="https://docs.google.com/forms/d/e/1FAIpQLSeuJUMxnH5lCd4_8uXCmLIfoTVo3fTaCCV93saXGdi8oOH6Yg/viewform?usp=publish-editor" target="_blank" rel="noreferrer">
+						Apply to sponsor Leviticus
+					</ButtonLink>
+				</Actions>
+			</SectionHeader>
+			<Grid>
+				{
+					sponsors.map((sponsor) => (
+						<Card>
+							<div
+								class="mb-4 grid min-h-32 w-full place-items-center rounded-md bg-site-surface-strong bg-linear-to-br from-brand-purple/18 to-brand-blue/20 text-3xl font-black text-brand-purple-strong"
+								aria-hidden="true"
+							>
+								{sponsor.name
+									.split(" ")
+									.map((part) => part[0])
+									.slice(0, 3)
+									.join("")}
+							</div>
+							<Eyebrow>{sponsor.level}</Eyebrow>
+							<h2 class="text-2xl">{sponsor.name}</h2>
+							<a class="font-extrabold text-brand-blue-strong underline-offset-[0.2em]" href={sponsor.url}>
+								Visit {sponsor.name}
+							</a>
+						</Card>
+					))
+				}
+			</Grid>
+		</PageShell>
+	</section>
+</BaseLayout>

@@ -1,17 +1,60 @@
 ---
-
+import RobotPanel from "../components/RobotPanel.astro";
+import Actions from "../components/ui/Actions.astro";
+import BandSection from "../components/ui/BandSection.astro";
+import ButtonLink from "../components/ui/ButtonLink.astro";
+import DisplayHeading from "../components/ui/DisplayHeading.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import FeatureCard from "../components/ui/FeatureCard.astro";
+import Grid from "../components/ui/Grid.astro";
+import HeroSection from "../components/ui/HeroSection.astro";
+import Lead from "../components/ui/Lead.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title="Home"
+	description="FTC team 36099 Leviticus builds robots, skills, and community through student-led engineering."
+>
+	<HeroSection aria-labelledby="home-title">
+		<div>
+			<Eyebrow>FTC Team 36099</Eyebrow>
+			<DisplayHeading id="home-title">Leviticus</DisplayHeading>
+			<Lead>
+				A student-led robotics team building competitive machines, practical engineering
+				skills, and a stronger STEM community.
+			</Lead>
+			<Actions>
+				<ButtonLink href="/meet-our-team/">Meet the team</ButtonLink>
+				<ButtonLink href="/sponsors/" variant="secondary">Support Leviticus</ButtonLink>
+			</Actions>
+		</div>
+		<RobotPanel />
+	</HeroSection>
+
+	<BandSection aria-labelledby="snapshot-title">
+		<SectionHeader>
+			<Eyebrow>What this site covers</Eyebrow>
+			<SectionHeading id="snapshot-title">A clear path through the team story.</SectionHeading>
+		</SectionHeader>
+		<Grid>
+			<FeatureCard href="/meet-our-team/">
+				<h3 class="text-xl leading-tight">Meet Our Team</h3>
+				<p>
+					Meet students from FTC 7854 and 15385, teams with World Championship and
+					Premiere Events experience.
+				</p>
+			</FeatureCard>
+			<FeatureCard href="/mission-statement/">
+				<h3 class="text-xl leading-tight">Mission Statement</h3>
+				<p>Why Leviticus exists and the long-term goals guiding the team.</p>
+			</FeatureCard>
+			<FeatureCard href="/contact/">
+				<h3 class="text-xl leading-tight">Contact</h3>
+				<p>Email, phone, and social links for families, sponsors, and community partners.</p>
+			</FeatureCard>
+		</Grid>
+	</BandSection>
+</BaseLayout>
