@@ -1,5 +1,6 @@
 ---
 import type { NavLink } from "../types/content";
+import { withBase } from "../utils/paths";
 
 interface Props {
 	currentPath: string;
@@ -13,6 +14,8 @@ const links: NavLink[] = [
 	{ href: "/contact/", label: "Contact" },
 	{ href: "/sponsors/", label: "Sponsors" },
 ];
+
+const isCurrentPage = (href: string) => currentPath === href || currentPath === withBase(href);
 ---
 
 <header
@@ -20,10 +23,16 @@ const links: NavLink[] = [
 >
 	<a
 		class="inline-flex min-w-max items-center gap-3 text-site-ink-soft no-underline"
-		href="/"
+		href={withBase("/")}
 		aria-label="FTC 36099 Leviticus home"
 	>
-		<img class="h-14 w-auto" src="/logo.png" alt="Leviticus 36099 logo" width="1536" height="1024" />
+		<img
+			class="h-14 w-auto"
+			src={withBase("/logo.png")}
+			alt="Leviticus 36099 logo"
+			width="1536"
+			height="1024"
+		/>
 	</a>
 	<nav aria-label="Main navigation">
 		<ul class="m-0 flex list-none flex-wrap justify-end gap-2 p-0 max-[720px]:justify-start">
@@ -33,10 +42,10 @@ const links: NavLink[] = [
 						<a
 							class:list={[
 								"inline-flex min-h-9 items-center rounded-full px-3 py-2 text-[0.95rem] font-extrabold text-site-nav no-underline hover:bg-site-blue-soft hover:text-brand-purple-strong",
-								currentPath === link.href && "bg-site-blue-soft text-brand-purple-strong",
+								isCurrentPage(link.href) && "bg-site-blue-soft text-brand-purple-strong",
 							]}
-							href={link.href}
-							aria-current={currentPath === link.href ? "page" : undefined}
+							href={withBase(link.href)}
+							aria-current={isCurrentPage(link.href) ? "page" : undefined}
 						>
 							{link.label}
 						</a>
