@@ -83,6 +83,8 @@ pnpm astro dev status
 pnpm astro dev logs
 ```
 
+- If an agent starts a dev server, watcher, browser helper, benchmark loop, or anything long-running, it must track the PID/session and clean it up before finishing, unless the user explicitly asks to keep it running.
+
 Common commands:
 
 ```sh

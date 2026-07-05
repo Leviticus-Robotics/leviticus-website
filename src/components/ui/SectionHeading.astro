@@ -2,14 +2,20 @@
 interface Props {
 	id?: string;
 	class?: string;
+	size?: "section" | "card";
 }
 
-const { id, class: className } = Astro.props;
+const { id, class: className, size = "section" } = Astro.props;
 ---
 
 <h2
 	id={id}
-	class:list={["mb-4 text-[clamp(2rem,4vw,3.25rem)] leading-none tracking-normal", className]}
+	class:list={[
+		"mb-4 font-display tracking-normal",
+		size === "section" && "text-[clamp(2rem,4vw,3.25rem)] leading-none",
+		size === "card" && "text-[clamp(2rem,2.5vw,2.75rem)] leading-[1.05]",
+		className,
+	]}
 >
 	<slot />
 </h2>

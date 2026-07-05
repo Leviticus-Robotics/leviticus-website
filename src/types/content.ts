@@ -3,6 +3,8 @@ export interface TeamMember {
 	role: string;
 	bio: string;
 	experiences: string[];
+	photo?: string;
+	photoCrop: string;
 }
 
 export interface Sponsor {

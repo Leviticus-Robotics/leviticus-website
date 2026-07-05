@@ -10,16 +10,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import type { ContactLink } from "../types/content";
 
 const contacts: ContactLink[] = [
-	{ label: "Email", value: "hello@team36099.org", href: "mailto:hello@team36099.org" },
-	{ label: "Phone", value: "(555) 360-9900", href: "tel:+15553609900" },
-	{ label: "Instagram", value: "@ftc36099", href: "https://example.com" },
-	{ label: "YouTube", value: "FTC 36099 Leviticus", href: "https://example.com" },
+	{
+		label: "Email",
+		value: "leviticus36099@gmail.com",
+		href: "mailto:leviticus36099@gmail.com",
+	},
+	{
+		label: "Instagram",
+		value: "@leviticus.robotics",
+		href: "https://www.instagram.com/leviticus.robotics/",
+	},
 ];
 ---
 
 <BaseLayout
 	title="Contact"
-	description="Contact FTC team 36099 Leviticus by email, phone, or social media."
+	description="Contact FTC team 36099 Leviticus by email or Instagram."
 >
 	<section aria-labelledby="contact-title">
 		<PageShell>
@@ -27,8 +33,7 @@ const contacts: ContactLink[] = [
 				<Eyebrow>Contact</Eyebrow>
 				<DisplayHeading id="contact-title">Start a conversation.</DisplayHeading>
 				<Lead>
-					Families, community partners, sponsors, and teams can use these placeholder
-					contact channels to reach Leviticus in the mockup.
+					Sponsors and anyone who's interested can contact us through these methods.
 				</Lead>
 			</SectionHeader>
 			<Grid>
