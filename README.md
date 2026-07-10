@@ -34,14 +34,30 @@ src/
 └── styles/                 Global Tailwind import and base styles
 ```
 
-## Commands
+## Local Setup
+
+### Prerequisites
+
+- Node.js 22.12 or newer
+- pnpm 11
+
+Clone the repository, install its dependencies, and start the development server:
 
 ```sh
+git clone <repository-url>
+cd leviticus-website
 pnpm install
-pnpm build
-pnpm preview
-pnpm astro dev --background
-pnpm astro dev stop
-pnpm astro dev status
-pnpm astro dev logs
+pnpm dev
+```
+
+Astro serves the site at `http://localhost:4321` by default. The development server watches local files and refreshes the site as they change. Press `Ctrl+C` to stop it.
+
+## Available Commands
+
+```sh
+pnpm dev      # Start the local development server
+pnpm check    # Check Astro and TypeScript diagnostics
+pnpm test     # Run the Vitest test suite
+pnpm build    # Create a production build
+pnpm preview  # Preview a production build locally
 ```

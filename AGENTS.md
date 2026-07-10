@@ -113,6 +113,7 @@ pnpm astro
 ## Commits
 
 - Use Conventional Commits for commit messages.
+- When the user asks to commit, use `git add .` and commit all current worktree changes by default. Only stage a narrower set when the user explicitly limits the commit or a change clearly must remain separate.
 - Use one of these types: `fix:`, `feat:`, `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`.
 - Provide a scope whenever possible, such as `feat(nav):`, `fix(content):`, or `test(utils):`.
 - For project-wide commits, omit the scope.
