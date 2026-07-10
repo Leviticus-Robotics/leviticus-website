@@ -33,6 +33,7 @@ The site should be treated primarily as a static marketing/content website, not 
 
 - Use Tailwind as the default styling system.
 - Store reusable brand and site colors as Tailwind `@theme` tokens in `src/styles/global.css`, then use semantic utilities such as `bg-brand-purple`, `text-site-muted`, and `border-site-line` instead of hardcoded hex colors.
+- Name color tokens with a hybrid convention: communicate the token's purpose or design-system role, while retaining a color cue when it makes the utility easier to understand. Names such as `brand-purple`, `site-muted`, `site-blue-soft`, and `site-surface` are appropriate; avoid names that describe only a raw color value without conveying its role.
 - Use SCSS, not indented Sass syntax, only for overrides or cases where Tailwind is genuinely awkward.
 - Keep styling close to the component/page it supports unless a shared pattern has clearly emerged.
 - For repeated Tailwind patterns, prefer small Astro components or partials over exported class-string aliases.
