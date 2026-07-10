@@ -24,8 +24,11 @@ export interface ContactLink {
 	href: string;
 }
 
-export interface RobotPhoto {
+export interface LightboxPhoto {
 	image: string;
 	alt: string;
 	longDescription: string;
+	label?: string;
 }
+
+export type RobotPhoto = Omit<LightboxPhoto, "label">;

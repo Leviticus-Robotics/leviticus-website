@@ -13,7 +13,7 @@ The site should be treated primarily as a static marketing/content website, not 
 - Use Astro as the primary frontend framework.
 - Use Svelte only for dynamic islands that need client-side state, events, or richer interaction.
 - For Svelte components, use Bits UI for accessible primitives and interactive controls.
-- Write Svelte components using Svelte 5 patterns: `$props`, `$state`, typed `Snippet` children with `{@render children?.()}`, and event attributes such as `onclick`. Avoid legacy Svelte 4 patterns such as `<slot>`, `export let`, `on:` event directives, and `createEventDispatcher` unless maintaining an existing legacy component.
+- Write Svelte components using Svelte 5 patterns: `$props`, `$state`, typed `Snippet` children with `{@render children?.()}` when the component genuinely owns child composition, and event attributes such as `onclick`. Avoid legacy Svelte 4 patterns such as `<slot>`, `export let`, `on:` event directives, and `createEventDispatcher` unless maintaining an existing legacy component.
 - For Astro components, do not introduce a component library. Keep markup local, simple, and tailored to the site.
 - Keep islands small and purposeful. Avoid turning static content into hydrated components unnecessarily.
 
@@ -24,6 +24,10 @@ The site should be treated primarily as a static marketing/content website, not 
 - Create components for reusable layout primitives, like Section, Container, Grid, or Card.
 - Create components for UI with reusable complexity, such as accessibility logic, image handling, fallback states, or local behavior.
 - Do not create components only to move a one-off chunk of page markup out of a page. Keep page-specific, non-reusable sections inline unless they meet one of the criteria above.
+- Follow the Single Responsibility Principle when defining component APIs. A component should manage its own state and presentation, not also discover, parse, or coordinate unrelated UI elsewhere on the page.
+- Preserve separation of concerns between components. The component that renders an interactive control should own that control's event handler; coordinate with other components through small, typed props, callbacks, bindings, or public component methods.
+- Preserve encapsulation. Components must not query, inspect, or attach listeners to arbitrary document-wide DOM unless the behavior is inherently document-wide. Do not use selectors or `data-*` attribute conventions as a substitute for an explicit typed component API.
+- Accept child snippets only when the component owns the children's layout or composition. Do not wrap unrelated UI in a component merely to expose state or behavior to it.
 
 ## Styling
 
@@ -66,7 +70,11 @@ The site should be treated primarily as a static marketing/content website, not 
 - Add or update tests for reusable utilities, data transforms, dynamic Svelte behavior, and regressions that are practical to cover.
 - For mostly static Astro pages, prefer targeted tests for logic and build verification over brittle snapshot tests.
 - When fixing a bug, add a regression test unless the behavior is purely visual or impractical to exercise.
-- Run the relevant test/build command before finishing when the change affects behavior.
+- Run relevant tests before finishing when the change affects behavior.
+- After every code change, inspect the changed files for diagnostics and run `pnpm check`.
+- Do not report a code change as complete until `pnpm check` passes.
+- If `pnpm check` cannot run or fails for a reason unrelated to the change, clearly report that in the final response.
+- Never run `pnpm build` unless the user explicitly asks for a production build. The site's CI/CD pipeline is responsible for production builds and publishing.
 
 ## Backend
 
@@ -108,7 +116,12 @@ pnpm astro
 - Use one of these types: `fix:`, `feat:`, `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`.
 - Provide a scope whenever possible, such as `feat(nav):`, `fix(content):`, or `test(utils):`.
 - For project-wide commits, omit the scope.
-- For commits that intentionally combine multiple change types, join them with spaced plus signs, such as `feat + refactor:`.
+- For commits that intentionally combine multiple logical changes, a multi-line message with one Conventional Commit entry per line is acceptable. For example:
+
+  ```text
+  refactor: lightbox to follow SRP
+  feat(skills): add skills to review component boundaries and verify site change
+  ```
 - You must mark breaking changes with `!`, such as `feat(api)!:` or `refactor(routes)!:`.
 - Do not omit `!` when a change is breaking.
 - Refer to https://www.conventionalcommits.org for details when unsure.

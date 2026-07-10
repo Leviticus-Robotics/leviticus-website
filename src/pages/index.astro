@@ -1,4 +1,5 @@
 ---
+import PhotoCarousel from "../components/PhotoCarousel.svelte";
 import Actions from "../components/ui/Actions.astro";
 import BandSection from "../components/ui/BandSection.astro";
 import ButtonLink from "../components/ui/ButtonLink.astro";
@@ -8,7 +9,6 @@ import FeatureCard from "../components/ui/FeatureCard.astro";
 import Grid from "../components/ui/Grid.astro";
 import HeroSection from "../components/ui/HeroSection.astro";
 import Lead from "../components/ui/Lead.astro";
-import PhotoLightbox from "../components/PhotoLightbox.svelte";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { robotPhotos } from "../data/robotPhotos";
@@ -47,108 +47,23 @@ import { withBase } from "../utils/paths";
 	</HeroSection>
 
 	<BandSection aria-labelledby="robot-gallery-title" class="py-14">
-		<PhotoLightbox label="Robot detail" client:load>
-			<div data-robot-carousel>
-				<div class="mb-8 flex items-end justify-between gap-6 max-[640px]:items-start">
-					<SectionHeader class="mb-0">
-						<Eyebrow>Robot photos</Eyebrow>
-						<SectionHeading id="robot-gallery-title">Build gallery</SectionHeading>
-						<Lead>The robot components we've designed.</Lead>
-					</SectionHeader>
-					<div class="flex shrink-0 gap-2" aria-label="Robot gallery controls">
-						<button
-							class="inline-grid size-11 place-items-center rounded-full border border-brand-blue/20 bg-white text-brand-blue shadow-sm transition hover:border-brand-blue/40 hover:bg-brand-blue hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-brand-blue"
-							type="button"
-							aria-label="Previous robot photo"
-							data-robot-carousel-prev
-						>
-							<svg
-								class="size-5"
-								aria-hidden="true"
-								focusable="false"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path d="m15 18-6-6 6-6"></path>
-							</svg>
-						</button>
-						<button
-							class="inline-grid size-11 place-items-center rounded-full border border-brand-blue/20 bg-white text-brand-blue shadow-sm transition hover:border-brand-blue/40 hover:bg-brand-blue hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-brand-blue"
-							type="button"
-							aria-label="Next robot photo"
-							data-robot-carousel-next
-						>
-							<svg
-								class="size-5"
-								aria-hidden="true"
-								focusable="false"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path d="m9 18 6-6-6-6"></path>
-							</svg>
-						</button>
-					</div>
-				</div>
-
-				<div
-					class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4"
-					data-robot-carousel-viewport
-				>
-					{
-						robotPhotos.map((photo, index) => (
-							<figure class="m-0 min-w-[calc((100%-4rem)/5)] snap-start overflow-hidden rounded-md border border-brand-blue/15 bg-white shadow-sm max-[980px]:min-w-[calc((100%-2rem)/3)] max-[640px]:min-w-[78vw]">
-								<button
-									class="block h-full w-full cursor-zoom-in bg-white text-left transition hover:bg-site-blue-soft focus:outline-2 focus:outline-offset-[-6px] focus:outline-brand-blue"
-									type="button"
-									aria-label={`View details for ${photo.alt}`}
-									data-lightbox-image={withBase(photo.image)}
-									data-lightbox-alt={photo.alt}
-									data-lightbox-long-description={photo.longDescription}
-									data-lightbox-label="Robot detail"
-								>
-									<img
-										class="aspect-4/3 h-full w-full object-contain p-2"
-										src={withBase(photo.image)}
-										alt={photo.alt}
-										loading={index === 0 ? "eager" : "lazy"}
-									/>
-								</button>
-							</figure>
-						))
-					}
-				</div>
-			</div>
-		</PhotoLightbox>
+		<div class="mb-4 flex items-end justify-between gap-6 max-[640px]:items-start">
+			<SectionHeader class="mb-0">
+				<Eyebrow>Robot photos</Eyebrow>
+				<SectionHeading id="robot-gallery-title">Build gallery</SectionHeading>
+				<Lead>The robot components we've designed.</Lead>
+			</SectionHeader>
+		</div>
+		<PhotoCarousel
+			photos={robotPhotos}
+			id="robot-gallery"
+			label="Robot gallery"
+			lightboxLabel="Robot detail"
+			previousLabel="Previous robot photo"
+			nextLabel="Next robot photo"
+			client:load
+		/>
 	</BandSection>
-
-	<script>
-		const carousel = document.querySelector("[data-robot-carousel-viewport]");
-		const previousButton = document.querySelector("[data-robot-carousel-prev]");
-		const nextButton = document.querySelector("[data-robot-carousel-next]");
-
-		const scrollCarousel = (direction) => {
-			if (!(carousel instanceof HTMLElement)) {
-				return;
-			}
-
-			carousel.scrollBy({
-				left: direction * carousel.clientWidth * 0.86,
-				behavior: "smooth",
-			});
-		};
-
-		previousButton?.addEventListener("click", () => scrollCarousel(-1));
-		nextButton?.addEventListener("click", () => scrollCarousel(1));
-	</script>
 
 	<BandSection aria-labelledby="snapshot-title">
 		<SectionHeader>

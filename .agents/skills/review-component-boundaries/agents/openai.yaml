@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Component Boundaries"
+  short_description: "Review component ownership before implementation"
+  default_prompt: "Use $review-component-boundaries to review this component design before making changes."

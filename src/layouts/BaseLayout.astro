@@ -1,5 +1,6 @@
 ---
 import SiteNav from "../components/SiteNav.astro";
+import { contactLinks, siteLinks } from "../data/site";
 import "../styles/global.css";
 import { withBase } from "../utils/paths";
 
@@ -15,8 +16,7 @@ const { title, description } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
-		<link rel="icon" href={withBase("/favicon.ico")} />
+		<link rel="icon" type="image/png" href={withBase("/logo.png")} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
@@ -45,18 +45,18 @@ const { title, description } = Astro.props;
 				<section aria-labelledby="footer-contact">
 					<h2 id="footer-contact" class="mb-3 text-xl font-extrabold">Contact</h2>
 					<ul class="m-0 list-none space-y-3 p-0">
-						<li>
-							<a
-								class="font-extrabold text-white/85 underline-offset-[0.2em] hover:text-white"
-								href="mailto:leviticus36099@gmail.com">leviticus36099@gmail.com</a
-							>
-						</li>
-						<li>
-							<a
-								class="font-extrabold text-white/85 underline-offset-[0.2em] hover:text-white"
-								href="https://www.instagram.com/leviticus.robotics/">@leviticus.robotics</a
-							>
-						</li>
+						{
+							contactLinks.map((contact) => (
+								<li>
+									<a
+										class="font-extrabold text-white/85 underline-offset-[0.2em] hover:text-white"
+										href={contact.href}
+									>
+										{contact.value}
+									</a>
+								</li>
+							))
+						}
 					</ul>
 				</section>
 
@@ -66,7 +66,7 @@ const { title, description } = Astro.props;
 						<li>
 							<a
 								class="inline-grid size-11 place-items-center rounded-full border border-white/20 text-white/85 transition hover:border-white/45 hover:text-white"
-								href="mailto:leviticus36099@gmail.com"
+								href={siteLinks.email}
 								aria-label="Email Leviticus Robotics"
 							>
 								<svg
@@ -88,7 +88,7 @@ const { title, description } = Astro.props;
 						<li>
 							<a
 								class="inline-grid size-11 place-items-center rounded-full border border-white/20 text-white/85 transition hover:border-white/45 hover:text-white"
-								href="https://github.com/Leviticus-Robotics"
+								href={siteLinks.github}
 								aria-label="Leviticus Robotics on GitHub"
 							>
 								<svg
@@ -108,8 +108,8 @@ const { title, description } = Astro.props;
 						</li>
 						<li>
 							<a
-								class="inline-grid size-11 place-items-center rounded-full border border-white/20 text-white/85 transition hover:border-white/45 hover:text-white"
-								href="https://hcb.hackclub.com/leviticus-robotics"
+								class="group inline-grid size-11 place-items-center rounded-full border border-white/20 text-white/85 transition hover:border-white/45 hover:text-white"
+								href={siteLinks.hcb}
 								aria-label="Leviticus Robotics on HCB"
 							>
 								<img
@@ -122,8 +122,8 @@ const { title, description } = Astro.props;
 						</li>
 						<li>
 							<a
-								class="inline-grid size-11 place-items-center rounded-full border border-white/20 text-white/85 transition hover:border-white/45 hover:text-white"
-								href="https://www.instagram.com/leviticus.robotics/"
+								class="group inline-grid size-11 place-items-center rounded-full border border-white/20 text-white/85 transition hover:border-white/45 hover:text-white"
+								href={siteLinks.instagram}
 								aria-label="Leviticus Robotics on Instagram"
 							>
 								<img

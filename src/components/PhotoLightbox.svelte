@@ -1,75 +1,30 @@
 <script lang="ts">
 	import { Dialog } from "bits-ui";
-	import { onMount, type Snippet } from "svelte";
-
-	interface LightboxPhoto {
-		image: string;
-		alt: string;
-		longDescription: string;
-		label?: string;
-	}
+	import type { LightboxPhoto } from "../types/content";
 
 	interface Props {
-		children?: Snippet;
 		label?: string;
 	}
 
-	let { children, label = "Photo detail" }: Props = $props();
+	let { label = "Photo detail" }: Props = $props();
 	let open = $state(false);
 	let selectedPhoto = $state<LightboxPhoto | null>(null);
 
-	const openPhoto = (photo: LightboxPhoto | null) => {
-		if (!photo) {
-			return;
-		}
-
+	export function openPhoto(photo: LightboxPhoto) {
 		selectedPhoto = photo;
 		open = true;
-	};
+	}
 
-	const readPhoto = (trigger: HTMLElement): LightboxPhoto | null => {
-		const {
-			lightboxImage: image,
-			lightboxAlt: alt,
-			lightboxLongDescription: longDescription,
-			lightboxLabel: label,
-		} = trigger.dataset;
+	function handleOpenChange(nextOpen: boolean) {
+		open = nextOpen;
 
-		if (!image || !alt || !longDescription) {
-			return null;
+		if (!nextOpen) {
+			selectedPhoto = null;
 		}
-
-		return { image, alt, longDescription, label };
-	};
-
-	const handleDocumentClick = (event: MouseEvent) => {
-		const target = event.target;
-
-		if (!(target instanceof Element)) {
-			return;
-		}
-
-		const trigger = target.closest("[data-lightbox-image]");
-
-		if (trigger instanceof HTMLElement) {
-			openPhoto(readPhoto(trigger));
-		}
-	};
-
-	onMount(() => {
-		document.addEventListener("click", handleDocumentClick);
-
-		return () => {
-			document.removeEventListener("click", handleDocumentClick);
-		};
-	});
+	}
 </script>
 
-<Dialog.Root bind:open>
-	<div>
-		{@render children?.()}
-	</div>
-
+<Dialog.Root bind:open onOpenChange={handleOpenChange}>
 	<Dialog.Portal>
 		<Dialog.Overlay class="fixed inset-0 z-50 bg-site-ink/70" />
 		<Dialog.Content

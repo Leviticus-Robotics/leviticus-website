@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Site Change"
+  short_description: "Run complete frontend change verification"
+  default_prompt: "Use $verify-site-change to verify this frontend change end to end."

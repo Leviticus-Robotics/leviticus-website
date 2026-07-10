@@ -4,8 +4,8 @@ export const teamMembers: TeamMember[] = [
 	{
 		name: "Andrew Wong",
 		role: "Hardware + Software",
-		bio: "Fill in ur bio here",
-		experiences: ["Can code", "Can CAD"],
+		bio: "Works across hardware and software, contributing to robot design, fabrication, and controls.",
+		experiences: ["Programming", "Computer-aided design"],
 		photo: "/members/andrew.png",
 		photoCrop: "50% 28%",
 	},
@@ -20,14 +20,14 @@ export const teamMembers: TeamMember[] = [
 	{
 		name: "Noah Kim",
 		role: "Hardware",
-		bio: "Turret go brrrr",
-		experiences: ["Resident duck"],
+		bio: "Develops and assembles robot mechanisms with a focus on reliable competition hardware.",
+		experiences: ["Mechanical design", "Robot assembly"],
 		photo: "/members/noah.png",
 		photoCrop: "50% 24%",
 	},
 	{
 		name: "Daniel Yang",
-		role: "The Yangster",
+		role: "Outreach",
 		bio: "Connects the team with schools, sponsors, and local organizations through demos and storytelling.",
 		experiences: ["Sponsor relations", "STEM event planning"],
 		photo: "/members/daniel.jpg",
@@ -35,36 +35,21 @@ export const teamMembers: TeamMember[] = [
 	},
 	{
 		name: "Ryan Liu",
-		role: "OSU Player",
-		bio: "Connects the team with schools, sponsors, and local organizations through demos and storytelling.",
-		experiences: ["Sponsor relations", "STEM event planning"],
+		role: "Team Member",
+		bio: "Contributes to team projects and helps prepare the robot for testing and competition.",
+		experiences: ["Robot testing", "Competition preparation"],
 		photo: "/members/ryan.png",
 		photoCrop: "50% 28%",
 	},
 	{
 		name: "Benjamin Wong",
-		role: "Bemanjinn",
-		bio: "Bem",
-		experiences: ["Si", "Senor"],
+		role: "Team Member",
+		bio: "Supports the team's build process and helps turn prototypes into competition-ready mechanisms.",
+		experiences: ["Prototyping", "Robot assembly"],
 		photo: "/members/ben.png",
 		photoCrop: "50% 10%",
 	},
 ];
 
 export const sponsors: Sponsor[] = [
-	// {
-	// 	name: "North Valley Engineering",
-	// 	level: "Platinum Sponsor",
-	// 	url: "https://example.com",
-	// },
-	// {
-	// 	name: "Blue Ridge Robotics Lab",
-	// 	level: "Gold Sponsor",
-	// 	url: "https://example.com",
-	// },
-	// {
-	// 	name: "Community Makers Guild",
-	// 	level: "Silver Sponsor",
-	// 	url: "https://example.com",
-	// },
 ];

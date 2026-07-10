@@ -2,8 +2,6 @@
 import type { TeamMember } from "../types/content";
 import { withBase } from "../utils/paths";
 import Card from "./ui/Card.astro";
-import Tag from "./ui/Tag.astro";
-import TagList from "./ui/TagList.astro";
 
 interface Props {
 	member: TeamMember;
@@ -16,7 +14,7 @@ const initials = member.name
 	.join("");
 ---
 
-<Card>
+<Card as="article">
 	{
 		member.photo ? (
 			<img
@@ -38,7 +36,13 @@ const initials = member.name
 	<h2 class="mb-3 text-2xl">{member.name}</h2>
 	<p>{member.bio}</p>
 	<h3 class="mt-5 mb-2 text-[0.95rem]">Prior experience</h3>
-	<TagList>
-		{member.experiences.map((experience) => <Tag>{experience}</Tag>)}
-	</TagList>
+	<ul class="mt-4 flex list-none flex-wrap gap-2 p-0">
+		{
+			member.experiences.map((experience) => (
+				<li class="rounded-full bg-site-blue-soft px-3 py-1.5 text-[0.85rem] font-bold text-brand-blue-strong">
+					{experience}
+				</li>
+			))
+		}
+	</ul>
 </Card>

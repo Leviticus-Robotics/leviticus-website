@@ -6,21 +6,8 @@ import Grid from "../components/ui/Grid.astro";
 import Lead from "../components/ui/Lead.astro";
 import PageShell from "../components/ui/PageShell.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
+import { contactLinks } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import type { ContactLink } from "../types/content";
-
-const contacts: ContactLink[] = [
-	{
-		label: "Email",
-		value: "leviticus36099@gmail.com",
-		href: "mailto:leviticus36099@gmail.com",
-	},
-	{
-		label: "Instagram",
-		value: "@leviticus.robotics",
-		href: "https://www.instagram.com/leviticus.robotics/",
-	},
-];
 ---
 
 <BaseLayout
@@ -38,8 +25,8 @@ const contacts: ContactLink[] = [
 			</SectionHeader>
 			<Grid>
 				{
-					contacts.map((contact) => (
-						<Card>
+					contactLinks.map((contact) => (
+						<Card as="article">
 							<Eyebrow>{contact.label}</Eyebrow>
 							<h2 class="mb-0 text-[clamp(1.25rem,2.4vw,1.7rem)] leading-[1.15]">
 								<a

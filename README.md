@@ -7,6 +7,7 @@ The site is a mostly static Astro project for team information, mission content,
 ## Stack
 
 - Astro for pages, layouts, and static components.
+- Svelte 5 islands and Bits UI for interactive controls.
 - Tailwind CSS for styling.
 - pnpm for package management.
 
@@ -22,7 +23,10 @@ Scoped component CSS is still appropriate for custom illustrations or awkward on
 src/
 ├── components/
 │   ├── ui/                 Shared Astro UI partials
-│   ├── RobotPanel.astro
+│   ├── Carousel.svelte
+│   ├── PhotoCarousel.svelte
+│   ├── PhotoLightbox.svelte
+│   ├── TeamMemberCard.astro
 │   └── SiteNav.astro
 ├── data/                   Structured team and sponsor data
 ├── layouts/                Shared page layouts

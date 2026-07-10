@@ -21,7 +21,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			<SectionHeader>
 				<DisplayHeading id="sponsors-title">Sponsors</DisplayHeading>
 				<Lead>
-					Our mission couldn't be possible to achieve without the generous support of our answers.
+					Our mission wouldn't be possible without the generous support of our sponsors.
 				</Lead>
 				<Actions>
 					<ButtonLink href="https://docs.google.com/forms/d/e/1FAIpQLSeuJUMxnH5lCd4_8uXCmLIfoTVo3fTaCCV93saXGdi8oOH6Yg/viewform?usp=publish-editor" target="_blank" rel="noreferrer">
@@ -29,10 +29,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					</ButtonLink>
 				</Actions>
 			</SectionHeader>
-			<Grid>
-				{
+			{
+				sponsors.length > 0 ? (
+					<Grid>
+						{
 					sponsors.map((sponsor) => (
-						<Card>
+						<Card as="article">
 							<div
 								class="mb-4 grid min-h-32 w-full place-items-center rounded-md bg-site-surface-strong bg-linear-to-br from-brand-purple/18 to-brand-blue/20 text-3xl font-black text-brand-purple-strong"
 								aria-hidden="true"
@@ -50,8 +52,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 							</a>
 						</Card>
 					))
-				}
-			</Grid>
+						}
+					</Grid>
+				) : (
+					<Card>
+						<h2 class="mb-3 text-2xl">Become an inaugural sponsor</h2>
+						<p>
+							We are building our first sponsor roster. Organizations can use the application
+							above to start a conversation with the team.
+						</p>
+					</Card>
+				)
+			}
 		</PageShell>
 	</section>
 </BaseLayout>
