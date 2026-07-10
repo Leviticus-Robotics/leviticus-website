@@ -13,8 +13,17 @@ The site should be treated primarily as a static marketing/content website, not 
 - Use Astro as the primary frontend framework.
 - Use Svelte only for dynamic islands that need client-side state, events, or richer interaction.
 - For Svelte components, use Bits UI for accessible primitives and interactive controls.
+- Write Svelte components using Svelte 5 patterns: `$props`, `$state`, typed `Snippet` children with `{@render children?.()}`, and event attributes such as `onclick`. Avoid legacy Svelte 4 patterns such as `<slot>`, `export let`, `on:` event directives, and `createEventDispatcher` unless maintaining an existing legacy component.
 - For Astro components, do not introduce a component library. Keep markup local, simple, and tailored to the site.
 - Keep islands small and purposeful. Avoid turning static content into hydrated components unnecessarily.
+
+### Component Boundaries
+
+- Create components for repeated content cards.
+- Create components for self-contained interactive UI.
+- Create components for reusable layout primitives, like Section, Container, Grid, or Card.
+- Create components for UI with reusable complexity, such as accessibility logic, image handling, fallback states, or local behavior.
+- Do not create components only to move a one-off chunk of page markup out of a page. Keep page-specific, non-reusable sections inline unless they meet one of the criteria above.
 
 ## Styling
 
@@ -98,6 +107,8 @@ pnpm astro
 - Use Conventional Commits for commit messages.
 - Use one of these types: `fix:`, `feat:`, `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`.
 - Provide a scope whenever possible, such as `feat(nav):`, `fix(content):`, or `test(utils):`.
+- For project-wide commits, omit the scope.
+- For commits that intentionally combine multiple change types, join them with spaced plus signs, such as `feat + refactor:`.
 - You must mark breaking changes with `!`, such as `feat(api)!:` or `refactor(routes)!:`.
 - Do not omit `!` when a change is breaking.
 - Refer to https://www.conventionalcommits.org for details when unsure.

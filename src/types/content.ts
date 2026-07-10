@@ -23,3 +23,9 @@ export interface ContactLink {
 	value: string;
 	href: string;
 }
+
+export interface RobotPhoto {
+	image: string;
+	alt: string;
+	longDescription: string;
+}

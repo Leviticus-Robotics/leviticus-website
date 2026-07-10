@@ -1,0 +1,44 @@
+---
+import type { TeamMember } from "../types/content";
+import { withBase } from "../utils/paths";
+import Card from "./ui/Card.astro";
+import Tag from "./ui/Tag.astro";
+import TagList from "./ui/TagList.astro";
+
+interface Props {
+	member: TeamMember;
+}
+
+const { member } = Astro.props;
+const initials = member.name
+	.split(" ")
+	.map((part) => part[0])
+	.join("");
+---
+
+<Card>
+	{
+		member.photo ? (
+			<img
+				class="mb-4 aspect-4/3 w-full rounded-md object-cover object-(--member-photo-crop)"
+				src={withBase(member.photo)}
+				alt={`${member.name}, ${member.role}`}
+				style={`--member-photo-crop: ${member.photoCrop};`}
+			/>
+		) : (
+			<div
+				class="mb-4 grid aspect-4/3 w-full place-items-center rounded-md bg-linear-to-br from-brand-purple to-brand-blue text-3xl font-black text-white"
+				aria-hidden="true"
+			>
+				{initials}
+			</div>
+		)
+	}
+	<p class="mb-1 font-extrabold text-brand-blue">{member.role}</p>
+	<h2 class="mb-3 text-2xl">{member.name}</h2>
+	<p>{member.bio}</p>
+	<h3 class="mt-5 mb-2 text-[0.95rem]">Prior experience</h3>
+	<TagList>
+		{member.experiences.map((experience) => <Tag>{experience}</Tag>)}
+	</TagList>
+</Card>
