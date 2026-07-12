@@ -6,7 +6,7 @@ export const teamMembers: TeamMember[] = [
 		role: "Hardware + Software",
 		bio: "Works across hardware and software, contributing to robot design, fabrication, and controls.",
 		experiences: ["Programming", "Computer-aided design"],
-		photo: "/members/andrew.png",
+		photo: "/src/assets/members/andrew.png",
 		photoCrop: "50% 28%",
 	},
 	{
@@ -14,7 +14,7 @@ export const teamMembers: TeamMember[] = [
 		role: "Software",
 		bio: "Builds autonomous routines, driver tools, and the feedback loops that make the robot reliable.",
 		experiences: ["Java controls", "Computer vision experiments"],
-		photo: "/members/matthew.jpg",
+		photo: "/src/assets/members/matthew.jpg",
 		photoCrop: "50% 22%",
 	},
 	{
@@ -22,7 +22,7 @@ export const teamMembers: TeamMember[] = [
 		role: "Hardware",
 		bio: "Develops and assembles robot mechanisms with a focus on reliable competition hardware.",
 		experiences: ["Mechanical design", "Robot assembly"],
-		photo: "/members/noah.png",
+		photo: "/src/assets/members/noah.png",
 		photoCrop: "50% 24%",
 	},
 	{
@@ -30,7 +30,7 @@ export const teamMembers: TeamMember[] = [
 		role: "Outreach",
 		bio: "Connects the team with schools, sponsors, and local organizations through demos and storytelling.",
 		experiences: ["Sponsor relations", "STEM event planning"],
-		photo: "/members/daniel.jpg",
+		photo: "/src/assets/members/daniel.jpg",
 		photoCrop: "72% 22%",
 	},
 	{
@@ -38,7 +38,7 @@ export const teamMembers: TeamMember[] = [
 		role: "Team Member",
 		bio: "Contributes to team projects and helps prepare the robot for testing and competition.",
 		experiences: ["Robot testing", "Competition preparation"],
-		photo: "/members/ryan.png",
+		photo: "/src/assets/members/ryan.png",
 		photoCrop: "50% 28%",
 	},
 	{
@@ -46,8 +46,16 @@ export const teamMembers: TeamMember[] = [
 		role: "Team Member",
 		bio: "Supports the team's build process and helps turn prototypes into competition-ready mechanisms.",
 		experiences: ["Prototyping", "Robot assembly"],
-		photo: "/members/ben.png",
+		photo: "/src/assets/members/ben.png",
 		photoCrop: "50% 10%",
+	},
+	{
+		name: "Katie",
+		role: "Intern",
+		bio: "Learns alongside the team and supports projects while gaining hands-on robotics experience.",
+		experiences: ["Robotics fundamentals", "Team projects"],
+		photo: "/src/assets/members/katie.jpg",
+		photoCrop: "50% 22%",
 	},
 ];
 

@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
+    "lighthouse": "lighthouse",
     "test": "vitest run",
     "preview": "astro preview",
     "astro": "astro"
@@ -27,6 +28,8 @@
     "@sveltejs/vite-plugin-svelte": "^7.2.0",
     "@testing-library/svelte": "^5.4.2",
     "jsdom": "^29.1.1",
+    "lighthouse": "^13.4.0",
+    "sharp": "^0.35.3",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   }

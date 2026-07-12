@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
 import type { NavLink } from "../types/content";
 import { withBase } from "../utils/paths";
 
@@ -26,12 +28,14 @@ const isCurrentPage = (href: string) => currentPath === href || currentPath === 
 		href={withBase("/")}
 		aria-label="FTC 36099 Leviticus home"
 	>
-		<img
+		<Image
 			class="h-14 w-auto"
-			src={withBase("/logo.png")}
+			src={logo}
 			alt="Leviticus 36099 logo"
-			width="1536"
-			height="1024"
+			format="avif"
+			widths={[84, 168]}
+			sizes="84px"
+			loading="eager"
 		/>
 	</a>
 	<nav aria-label="Main navigation">

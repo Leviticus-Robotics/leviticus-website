@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { LightboxPhoto } from "../types/content";
-	import { withBase } from "../utils/paths";
 	import Carousel from "./Carousel.svelte";
 	import PhotoLightbox from "./PhotoLightbox.svelte";
 
@@ -25,7 +24,6 @@
 
 	const resolvePhoto = (photo: LightboxPhoto): LightboxPhoto => ({
 		...photo,
-		image: withBase(photo.image),
 		label: photo.label ?? lightboxLabel,
 	});
 </script>
@@ -43,7 +41,9 @@
 			>
 				<img
 					class="aspect-4/3 h-full w-full object-contain p-2"
-					src={withBase(photo.image)}
+					src={photo.thumbnail ?? photo.image}
+					srcset={photo.thumbnailSrcset}
+					sizes={photo.thumbnailSizes}
 					alt={photo.alt}
 					loading={index === 0 ? "eager" : "lazy"}
 				/>

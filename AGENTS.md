@@ -16,6 +16,9 @@ The site should be treated primarily as a static marketing/content website, not 
 - Write Svelte components using Svelte 5 patterns: `$props`, `$state`, typed `Snippet` children with `{@render children?.()}` when the component genuinely owns child composition, and event attributes such as `onclick`. Avoid legacy Svelte 4 patterns such as `<slot>`, `export let`, `on:` event directives, and `createEventDispatcher` unless maintaining an existing legacy component.
 - For Astro components, do not introduce a component library. Keep markup local, simple, and tailored to the site.
 - Keep islands small and purposeful. Avoid turning static content into hydrated components unnecessarily.
+- Use Astro's `<Image />` by default for team photos, logos, robot photos, and thumbnails.
+- Use Astro's `<Picture />` for large, prominent images where offering additional formats can noticeably reduce transferred bytes.
+- When an image is rendered inside a Svelte island, optimize it in the owning Astro page with `getImage()` and pass the resulting URL and responsive metadata into Svelte rather than coupling the client component to Astro's asset pipeline.
 
 ### Component Boundaries
 
@@ -41,6 +44,7 @@ The site should be treated primarily as a static marketing/content website, not 
 
 ## Code Quality
 
+- Before answering questions or changing code that depends on a framework, library, tool, or external API, find and read the relevant current primary documentation and established best-practice guidance. Prefer official sources, follow their recommended patterns, and cite or link the material used when reporting the result.
 - Keep code focused on a single responsibility. Pages compose content and sections; components encapsulate reusable UI; utilities hold shared logic.
 - Follow DRY, but do not abstract prematurely. Extract shared code when duplication creates maintenance risk or obscures intent.
 - Do not add one-off hacks, hardcoded special cases, or brittle fixes that only address the immediate symptom. Understand the underlying cause and make the smallest durable change.
@@ -72,10 +76,11 @@ The site should be treated primarily as a static marketing/content website, not 
 - For mostly static Astro pages, prefer targeted tests for logic and build verification over brittle snapshot tests.
 - When fixing a bug, add a regression test unless the behavior is purely visual or impractical to exercise.
 - Run relevant tests before finishing when the change affects behavior.
-- After every code change, inspect the changed files for diagnostics and run `pnpm check`.
-- Do not report a code change as complete until `pnpm check` passes.
-- If `pnpm check` cannot run or fails for a reason unrelated to the change, clearly report that in the final response.
-- Never run `pnpm build` unless the user explicitly asks for a production build. The site's CI/CD pipeline is responsible for production builds and publishing.
+- For trivial, content-only changes that do not alter components, templates, styling, configuration, types, or runtime behavior, inspect the diff but do not require `pnpm check` or `pnpm test`.
+- For all non-trivial code changes, inspect the changed files for diagnostics and run `pnpm check`. Run `pnpm test` when the change affects tested logic or behavior.
+- Do not report a non-trivial code change as complete until `pnpm check` passes.
+- If a required check cannot run or fails for a reason unrelated to the change, clearly report that in the final response.
+- Never run `pnpm build` unless the user explicitly asks for a production build or explicitly requests a Lighthouse audit. The site's CI/CD pipeline is responsible for other production builds and publishing.
 
 ## Backend
 
@@ -102,6 +107,16 @@ pnpm astro dev logs
 ```
 
 - If an agent starts a dev server, watcher, browser helper, benchmark loop, or anything long-running, it must track the PID/session and clean it up before finishing, unless the user explicitly asks to keep it running.
+
+### Lighthouse
+
+- Run Lighthouse only when the user explicitly requests a Lighthouse audit. Do not run it as routine verification after changes.
+- Audit a production build, not the Astro development server: run `pnpm build`, start a tracked temporary `pnpm preview` server, and run the project-local `pnpm lighthouse` command against that preview.
+- Write generated Lighthouse reports to the repository-local `.lighthouse/` directory, which is gitignored.
+- Stop the temporary preview and any browser process started for the audit before finishing.
+- Report the audited URL, category scores, Core Web Vitals, the LCP element and phase breakdown, and the highest-impact opportunities rather than only the overall performance score.
+- Evaluate performance changes as an ablation study: record a baseline, change one optimization variable at a time, rebuild, and rerun Lighthouse with the same URL, viewport, throttling, and audit settings before testing another optimization.
+- Save each ablation report under a distinct descriptive name in `.lighthouse/`, compare its metrics with the baseline, and report the measured delta. Do not combine multiple performance optimizations until their individual effects have been measured, unless the user explicitly asks to batch them.
 
 Common commands:
 

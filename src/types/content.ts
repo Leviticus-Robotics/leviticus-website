@@ -26,9 +26,15 @@ export interface ContactLink {
 
 export interface LightboxPhoto {
 	image: string;
+	thumbnail?: string;
+	thumbnailSrcset?: string;
+	thumbnailSizes?: string;
 	alt: string;
 	longDescription: string;
 	label?: string;
 }
 
-export type RobotPhoto = Omit<LightboxPhoto, "label">;
+export type RobotPhoto = Omit<
+	LightboxPhoto,
+	"thumbnail" | "thumbnailSrcset" | "thumbnailSizes" | "label"
+>;

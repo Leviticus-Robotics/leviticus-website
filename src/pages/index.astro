@@ -1,4 +1,7 @@
 ---
+import type { ImageMetadata } from "astro";
+import { getImage, Picture } from "astro:assets";
+import previousRobot from "../assets/previous_robot.png";
 import PhotoCarousel from "../components/PhotoCarousel.svelte";
 import Actions from "../components/ui/Actions.astro";
 import BandSection from "../components/ui/BandSection.astro";
@@ -13,7 +16,41 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { robotPhotos } from "../data/robotPhotos";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { withBase } from "../utils/paths";
+
+const thumbnailSizes = "(max-width: 640px) 78vw, (max-width: 980px) 33vw, 20vw";
+const robotImages = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/robot/*.{jpeg,jpg,png,gif}",
+);
+const optimizedRobotPhotos = await Promise.all(
+	robotPhotos.map(async (photo) => {
+		if (!robotImages[photo.image]) {
+			throw new Error(
+				`"${photo.image}" does not exist in glob: "src/assets/robot/*.{jpeg,jpg,png,gif}"`,
+			);
+		}
+
+		const source = (await robotImages[photo.image]()).default;
+		const thumbnailSmall = await getImage({ src: source, width: 320, format: "avif" });
+		const thumbnailLarge = await getImage({
+			src: source,
+			width: source.width,
+			format: "avif",
+		});
+		const full = await getImage({
+			src: source,
+			width: source.width,
+			format: "webp",
+		});
+
+		return {
+			...photo,
+			image: full.src,
+			thumbnail: thumbnailSmall.src,
+			thumbnailSrcset: `${thumbnailSmall.src} 320w, ${thumbnailLarge.src} ${source.width}w`,
+			thumbnailSizes,
+		};
+	}),
+);
 ---
 
 <BaseLayout
@@ -36,12 +73,14 @@ import { withBase } from "../utils/paths";
 		<figure
 			class="m-0 overflow-hidden rounded-lg border border-site-line bg-site-ink shadow-[0_20px_55px_color-mix(in_srgb,var(--color-brand-purple-strong)_15%,transparent)]"
 		>
-			<img
+			<Picture
 				class="aspect-4/3 w-full object-cover object-[58%_50%]"
-				src={withBase("/previous_robot.png")}
+				src={previousRobot}
 				alt="Previous FTC robot render"
-				width="2224"
-				height="1492"
+				formats={["avif", "webp"]}
+				widths={[378, 556, 756, 1112]}
+				sizes="(max-width: 840px) calc(100vw - 2rem), 44vw"
+				loading="eager"
 			/>
 		</figure>
 	</HeroSection>
@@ -55,7 +94,7 @@ import { withBase } from "../utils/paths";
 			</SectionHeader>
 		</div>
 		<PhotoCarousel
-			photos={robotPhotos}
+			photos={optimizedRobotPhotos}
 			id="robot-gallery"
 			label="Robot gallery"
 			lightboxLabel="Robot detail"

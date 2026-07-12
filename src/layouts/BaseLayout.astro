@@ -1,8 +1,11 @@
 ---
+import { getImage, Image } from "astro:assets";
+import hcbIcon from "../assets/icons/hcb.png";
+import instagramIcon from "../assets/icons/instagram.png";
+import logo from "../assets/logo.png";
 import SiteNav from "../components/SiteNav.astro";
 import { contactLinks, siteLinks } from "../data/site";
 import "../styles/global.css";
-import { withBase } from "../utils/paths";
 
 interface Props {
 	title: string;
@@ -10,13 +13,14 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const favicon = await getImage({ src: logo, width: 64, format: "png" });
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href={withBase("/logo.png")} />
+		<link rel="icon" type="image/png" href={favicon.src} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
@@ -112,11 +116,14 @@ const { title, description } = Astro.props;
 								href={siteLinks.hcb}
 								aria-label="Leviticus Robotics on HCB"
 							>
-								<img
+								<Image
 									class="size-6 brightness-125 opacity-85 transition group-hover:opacity-100"
-									src={withBase("/hcb_icon.png")}
+									src={hcbIcon}
 									alt=""
 									aria-hidden="true"
+									width={48}
+									format="webp"
+									loading="lazy"
 								/>
 							</a>
 						</li>
@@ -126,11 +133,14 @@ const { title, description } = Astro.props;
 								href={siteLinks.instagram}
 								aria-label="Leviticus Robotics on Instagram"
 							>
-								<img
+								<Image
 									class="size-6 brightness-125 opacity-85 transition group-hover:opacity-100"
-									src={withBase("/instagram_icon.png")}
+									src={instagramIcon}
 									alt=""
 									aria-hidden="true"
+									width={48}
+									format="webp"
+									loading="lazy"
 								/>
 							</a>
 						</li>
