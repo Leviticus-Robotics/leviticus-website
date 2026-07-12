@@ -81,6 +81,7 @@ const optimizedRobotPhotos = await Promise.all(
 				widths={[378, 556, 756, 1112]}
 				sizes="(max-width: 840px) calc(100vw - 2rem), 44vw"
 				loading="eager"
+				fetchpriority="high"
 			/>
 		</figure>
 	</HeroSection>
@@ -100,7 +101,7 @@ const optimizedRobotPhotos = await Promise.all(
 			lightboxLabel="Robot detail"
 			previousLabel="Previous robot photo"
 			nextLabel="Next robot photo"
-			client:load
+			client:visible
 		/>
 	</BandSection>
 

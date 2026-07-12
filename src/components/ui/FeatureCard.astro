@@ -1,6 +1,4 @@
 ---
-import { withBase } from "../../utils/paths";
-
 interface Props {
 	href: string;
 	class?: string;
@@ -14,7 +12,7 @@ const { href, class: className } = Astro.props;
 		"rounded-lg border border-site-line bg-white/85 p-5 text-inherit no-underline shadow-[0_10px_30px_color-mix(in_srgb,var(--color-brand-blue)_8%,transparent)] transition hover:-translate-y-0.5 hover:border-brand-purple",
 		className,
 	]}
-	href={withBase(href)}
+	href={href}
 >
 	<slot />
 </a>

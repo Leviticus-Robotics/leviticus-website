@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import type { NavLink } from "../types/content";
-import { withBase } from "../utils/paths";
 
 interface Props {
 	currentPath: string;
@@ -17,7 +16,7 @@ const links: NavLink[] = [
 	{ href: "/sponsors/", label: "Sponsors" },
 ];
 
-const isCurrentPage = (href: string) => currentPath === href || currentPath === withBase(href);
+const isCurrentPage = (href: string) => currentPath === href;
 ---
 
 <header
@@ -25,7 +24,7 @@ const isCurrentPage = (href: string) => currentPath === href || currentPath === 
 >
 	<a
 		class="inline-flex min-w-max items-center gap-3 text-site-ink-soft no-underline"
-		href={withBase("/")}
+		href="/"
 		aria-label="FTC 36099 Leviticus home"
 	>
 		<Image
@@ -48,7 +47,7 @@ const isCurrentPage = (href: string) => currentPath === href || currentPath === 
 								"inline-flex min-h-9 items-center rounded-full px-3 py-2 text-[0.95rem] font-extrabold text-site-nav no-underline hover:bg-site-blue-soft hover:text-brand-purple-strong",
 								isCurrentPage(link.href) && "bg-site-blue-soft text-brand-purple-strong",
 							]}
-							href={withBase(link.href)}
+							href={link.href}
 							aria-current={isCurrentPage(link.href) ? "page" : undefined}
 						>
 							{link.label}
