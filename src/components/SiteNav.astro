@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import type { NavLink } from "../types/content";
+import { sitePath } from "../utils/paths";
 
 interface Props {
 	currentPath: string;
@@ -14,9 +15,11 @@ const links: NavLink[] = [
 	{ href: "/mission-statement/", label: "Mission Statement" },
 	{ href: "/contact/", label: "Contact" },
 	{ href: "/sponsors/", label: "Sponsors" },
-];
+].map((link) => ({ ...link, href: sitePath(link.href) }));
 
-const isCurrentPage = (href: string) => currentPath === href;
+const homeHref = sitePath("/");
+const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
+const isCurrentPage = (href: string) => normalizePath(currentPath) === normalizePath(href);
 ---
 
 <header
@@ -24,7 +27,7 @@ const isCurrentPage = (href: string) => currentPath === href;
 >
 	<a
 		class="inline-flex min-w-max items-center gap-3 text-site-ink-soft no-underline"
-		href="/"
+		href={homeHref}
 		aria-label="FTC 36099 Leviticus home"
 	>
 		<Image

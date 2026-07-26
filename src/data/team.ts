@@ -60,4 +60,9 @@ export const teamMembers: TeamMember[] = [
 ];
 
 export const sponsors: Sponsor[] = [
+	{
+		name: "Fabworks",
+		level: "Sponsor",
+		url: "https://www.fabworks.com/",
+	},
 ];
