@@ -1,3 +1,5 @@
+import type { SvgComponent } from "astro/types";
+
 export interface TeamMember {
 	name: string;
 	role: string;
@@ -9,8 +11,8 @@ export interface TeamMember {
 
 export interface Sponsor {
 	name: string;
-	level: string;
 	url: string;
+	logo: SvgComponent;
 }
 
 export interface NavLink {

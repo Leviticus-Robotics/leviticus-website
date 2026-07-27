@@ -1,0 +1,18 @@
+---
+import type { Sponsor } from "../types/content";
+
+interface Props {
+	sponsor: Sponsor;
+}
+
+const { sponsor } = Astro.props;
+const Logo = sponsor.logo;
+---
+
+<a
+	class="flex min-h-32 items-center justify-center rounded-lg border border-site-line/70 bg-site-surface-glass p-6 transition-[background-color,box-shadow] duration-200 hover:bg-site-surface hover:shadow-xl hover:shadow-brand-purple/20"
+	href={sponsor.url}
+	aria-label={`Visit ${sponsor.name} website`}
+>
+	<Logo class="h-auto max-h-16 w-full max-w-80" aria-hidden="true" />
+</a>

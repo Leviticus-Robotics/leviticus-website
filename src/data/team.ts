@@ -1,4 +1,5 @@
 import type { Sponsor, TeamMember } from "../types/content";
+import fabworksLogo from "../assets/sponsors/fabworks.svg";
 
 export const teamMembers: TeamMember[] = [
 	{
@@ -62,7 +63,7 @@ export const teamMembers: TeamMember[] = [
 export const sponsors: Sponsor[] = [
 	{
 		name: "Fabworks",
-		level: "Sponsor",
 		url: "https://www.fabworks.com/",
+		logo: fabworksLogo,
 	},
 ];
