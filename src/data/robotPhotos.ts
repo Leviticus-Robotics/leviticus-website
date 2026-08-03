@@ -3,56 +3,44 @@ import type { RobotPhoto } from "../types/content";
 export const robotPhotos: RobotPhoto[] = [
 	{
 		image: "/src/assets/robot/robot1.png",
-		alt: "Leviticus robot front assembly detail",
+		alt: "Chassis",
 		longDescription:
-			"A close look at the front assembly, showing how the team packaged structural rails, brackets, and moving hardware into a compact competition-ready footprint.",
+			"Carbon fiber parallel plate chassis designed for the FTC Decode competition.",
 	},
 	{
 		image: "/src/assets/robot/robot2.png",
-		alt: "Leviticus robot drivetrain and frame",
+		alt: "Turret",
 		longDescription:
-			"The drivetrain and frame layout reveal the robot's foundation: a rigid chassis, accessible fasteners, and open space for mechanisms, wiring, and future service work.",
+			"A turret assembly designed for the FTC Decode competition that contains a 3D printed bearing and is powered by 2 servos.",
 	},
 	{
 		image: "/src/assets/robot/robot3.png",
-		alt: "Leviticus robot mechanism close-up",
+		alt: "Extending Arm Assembly",
 		longDescription:
-			"This mechanism close-up highlights the team's iteration process, with layered plates and carefully positioned hardware used to turn design sketches into reliable motion.",
+			"Arm designed to mount a manipulator on the end that can extend through drawer slides powered by a servo linkage.",
 	},
 	{
 		image: "/src/assets/robot/robot4.png",
-		alt: "Leviticus robot build progress",
+		alt: "Linear Slides Assembly",
 		longDescription:
-			"A build-progress view of the robot as subsystems come together, showing the balance between prototyping quickly and leaving room to tune the design.",
-	},
-	{
-		image: "/src/assets/robot/robot5.png",
-		alt: "Leviticus robot wiring and structure",
-		longDescription:
-			"The wiring and structure view shows how electronics and mechanical parts are routed together so the robot remains organized, inspectable, and easier to repair.",
+			"Full vertical slides stack containing the extending arm designed for the FTC Into the Deep competition.",
 	},
 	{
 		image: "/src/assets/robot/robot6.png",
-		alt: "Leviticus robot intake and hardware",
+		alt: "Chassis 2",
 		longDescription:
-			"This photo focuses on intake-side hardware, where geometry, grip, and mounting choices all affect how consistently the robot can interact with game elements.",
+			"Parallel plate chassis combining aluminum and carbon fiber designed for the FTC Into the Deep Competition. Also features motors and pulleys to power linear slides.",
 	},
 	{
 		image: "/src/assets/robot/robot7.png",
-		alt: "Leviticus robot vertical view",
+		alt: "Outtake Assembly",
 		longDescription:
-			"The vertical view makes the robot's overall packaging easier to read, from the lower chassis up through the higher mechanisms and support structure.",
+			"Full outtake assembly designed for Into the Deep that mounts on Chassis 2. It feautres linear slides, an arm, and 2 separate claws.",
 	},
 	{
 		image: "/src/assets/robot/robot8.png",
-		alt: "Leviticus robot side profile",
+		alt: "Intake Assembly",
 		longDescription:
-			"The side profile shows the robot's proportions and mechanism reach, giving a clearer sense of how the build fits within FTC sizing and gameplay constraints.",
-	},
-	{
-		image: "/src/assets/robot/robot9.png",
-		alt: "Leviticus robot final assembly",
-		longDescription:
-			"The final assembly photo captures the robot as a complete system, with frame, mechanisms, electronics, and finishing details ready for testing and competition.",
+			"Intake assembly featuring compliant wheels and tubing for the FTC Decode competition.",
 	},
 ];
