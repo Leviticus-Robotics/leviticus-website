@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import { getImage, Picture } from "astro:assets";
-import previousRobot from "../assets/previous_robot.png";
+import team from "../assets/team.jpg";
 import PhotoCarousel from "../components/PhotoCarousel.svelte";
 import Actions from "../components/ui/Actions.astro";
 import BandSection from "../components/ui/BandSection.astro";
@@ -78,8 +78,8 @@ const optimizedRobotPhotos = await Promise.all(
 		>
 			<Picture
 				class="aspect-4/3 w-full object-cover object-[58%_50%]"
-				src={previousRobot}
-				alt="Previous FTC robot render"
+				src={team}
+				alt="From left to right: Ben, Noah, Matthew, Daniel, Andrew"
 				formats={["avif", "webp"]}
 				widths={[378, 556, 756, 1112]}
 				sizes="(max-width: 840px) calc(100vw - 2rem), 44vw"
