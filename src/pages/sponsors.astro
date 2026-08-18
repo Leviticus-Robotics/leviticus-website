@@ -1,5 +1,5 @@
 ---
-import { sponsors } from "../data/team";
+import { sponsors, tiers } from "../data/team";
 import SponsorCard from "../components/SponsorCard.astro";
 import Actions from "../components/ui/Actions.astro";
 import ButtonLink from "../components/ui/ButtonLink.astro";
@@ -49,6 +49,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					</Card>
 				)
 			}
+			{
+				tiers.map(tier => (
+					<Card>
+						<h2 class="mb-3 text-2xl">{tier.level}</h2>
+						<p>{tier.desc}</p>
+						<h3 class="mb-3 text-2xl"> Benefits </h3>
+						<ul>
+							{
+								tier.benefits.map(x => (<li>{x}</li>))
+							}
+						</ul>
+					</Card>
+				))
+			}
 		</PageShell>
 	</section>
+
 </BaseLayout>
