@@ -75,7 +75,8 @@ export const tiers : Tier[] = [
 		color: "#d9a47c",
 		price: 500,
 		benefits: [
-			"Logo on our website"
+			"Logo on our website",
+			"Shoutout on our Instagram",
 		],
 		desc: "Help support the team"
 	},
@@ -84,8 +85,9 @@ export const tiers : Tier[] = [
 		color: "#bdbdbd",
 		price: 1000,
 		benefits: [
-			"All of the above tiers, and...",
-			"Shoutout on our instagram",
+			"All Bronze benifits",
+			"Name/logo on our portfolio",
+			"Small logo on our uniform",
 		],
 		desc: "Help support the team"
 	},
@@ -94,10 +96,10 @@ export const tiers : Tier[] = [
 		color: "#ffd173",
 		price: 2000,
 		benefits: [
-			"All of the above tiers, and...",
-			"Shoutout on our instagram",
+			"All Silver Benifits",
+			"Big logo on uniform",
 			"Logo on our robot",
-			"Logo on our uniform",
+			"Recognition during competitions",
 		],
 		desc: "Help support the team"
 	},
