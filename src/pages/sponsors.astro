@@ -35,7 +35,7 @@ const sponsorTiers = tierOrder
 					Our mission wouldn't be possible without the generous support of our sponsors.
 				</Lead>
 				<Actions>
-					<ButtonLink href="/contact/" target="_blank" rel="noreferrer">
+					<ButtonLink href="https://docs.google.com/forms/d/e/1FAIpQLSeuJUMxnH5lCd4_8uXCmLIfoTVo3fTaCCV93saXGdi8oOH6Yg/viewform?usp=publish-editor" target="_blank" rel="noreferrer">
 						Sponsor us!
 					</ButtonLink>
 					<ButtonLink href="https://hcb.hackclub.com/donations/start/leviticus-robotics" target="_blank" rel="noreferrer">
@@ -80,23 +80,6 @@ const sponsorTiers = tierOrder
 					</Card>
 				)
 			}
-			<h1 class="text-4xl">Sponser Tiers</h1>
-			<p>Sponser us with for increasing amounts of recognition</p>
-			{
-				tiers.map(tier => (
-					<Card>
-						<h2 class="mb-3 text-2xl" style={`color: ${tier.color};`}>{tier.level}</h2>
-						<p>{tier.desc}</p>
-						<h3 class="mb-3 text-2xl"> Benefits </h3>
-						<ul style="list-style-type: disc; list-style-position: inside; list-style-image: none;">
-							{
-								tier.benefits.map(x => (<li>{x}</li>))
-							}
-						</ul>
-					</Card>
-				))
-			}
 		</PageShell>
 	</section>
-
 </BaseLayout>
