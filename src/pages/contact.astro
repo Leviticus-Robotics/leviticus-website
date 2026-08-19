@@ -2,7 +2,6 @@
 import Card from "../components/ui/Card.astro";
 import DisplayHeading from "../components/ui/DisplayHeading.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
-import Grid from "../components/ui/Grid.astro";
 import Lead from "../components/ui/Lead.astro";
 import PageShell from "../components/ui/PageShell.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
@@ -23,21 +22,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					Sponsors and other interested parties can reach us using the methods below.
 				</Lead>
 			</SectionHeader>
-			<Grid>
+			<div class="grid grid-cols-2 gap-4 max-[840px]:grid-cols-1">
 				{
 					contactLinks.map((contact) => (
-						<Card as="article">
+						<Card as="article" class="w-full max-w-lg">
 							<Eyebrow>{contact.label}</Eyebrow>
 							<h2 class="mb-0 text-[clamp(1.25rem,2.4vw,1.7rem)] leading-[1.15]">
 								<a
-									class="text-brand-purple-strong decoration-brand-purple/35 underline-offset-[0.2em]"
+									class="text-brand-purple-strong [overflow-wrap:anywhere] decoration-brand-purple/35 underline-offset-[0.2em]"
 									href={contact.href}>{contact.value}</a
 								>
 							</h2>
 						</Card>
 					))
 				}
-			</Grid>
+			</div>
 		</PageShell>
 	</section>
 </BaseLayout>

@@ -5,7 +5,7 @@ export const teamMembers: TeamMember[] = [
 	{
 		name: "Andrew Wong",
 		role: "Hardware + Software",
-		bio: "Andrew is a rising senior who enjoys working on robots in any way, whether through the hardware or software team. This is his 4th year in FTC and he hopes to apply math and physics to solve this year's challenge. Outside of robotics, Andrew enjoys playing tennis and chess.",
+		bio: "Andrew is a senior who enjoys working on robots in any way, whether through the hardware or software team. This is his 4th year in FTC and he hopes to apply math and physics to solve this year's challenge. Outside of robotics, Andrew enjoys playing tennis and chess.",
 		experiences: [/*"Programming", "Computer-aided design"*/],
 		photo: "/src/assets/members/andrew.png",
 		photoCrop: "50% 28%",
@@ -45,7 +45,7 @@ export const teamMembers: TeamMember[] = [
 	{
 		name: "Benjamin Wong",
 		role: "Hardware",
-		bio: "Benjamin is a rising senior at The King’s Academy. He works on the team's mechanical design, CAD, and runs the team’s social media. Outside of robotics, he spends his free time building personal projects, playing blue on the piano, and running.",
+		bio: "Benjamin is a senior at The King’s Academy. He works on the team's mechanical design, CAD, and runs the team’s social media. Outside of robotics, he spends his free time building personal projects, playing blue on the piano, and running.",
 		experiences: [/*"Prototyping", "Robot assembly"*/],
 		photo: "/src/assets/members/ben.png",
 		photoCrop: "50% 10%",
