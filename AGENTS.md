@@ -76,7 +76,7 @@ The site should be treated primarily as a static marketing/content website, not 
 - For mostly static Astro pages, prefer targeted tests for logic and build verification over brittle snapshot tests.
 - When fixing a bug, add a regression test unless the behavior is purely visual or impractical to exercise.
 - Run relevant tests before finishing when the change affects behavior.
-- For trivial, content-only changes that do not alter components, templates, styling, configuration, types, or runtime behavior, inspect the diff but do not require `pnpm check` or `pnpm test`.
+- For small, low-risk changes that do not affect runtime behavior—such as copy edits, simple static markup adjustments, or minor typography, spacing, and class changes—inspect the diff but do not require `pnpm check` or `pnpm test`.
 - For all non-trivial code changes, inspect the changed files for diagnostics and run `pnpm check`. Run `pnpm test` when the change affects tested logic or behavior.
 - Do not report a non-trivial code change as complete until `pnpm check` passes.
 - If a required check cannot run or fails for a reason unrelated to the change, clearly report that in the final response.

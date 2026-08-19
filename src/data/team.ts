@@ -1,4 +1,4 @@
-import type { Sponsor, TeamMember, Tier } from "../types/content";
+import { Tier, type Sponsor, type TeamMember, type TierData } from "../types/content";
 import fabworksLogo from "../assets/sponsors/fabworks.svg";
 
 export const teamMembers: TeamMember[] = [
@@ -65,35 +65,32 @@ export const sponsors: Sponsor[] = [
 		name: "Fabworks",
 		url: "https://www.fabworks.com/",
 		logo: fabworksLogo,
-		type: "gold",
+		tier: Tier.Gold,
 	},
 ];
 
-export const tiers : Tier[] = [
-	{
-		level: "Bronze",
-		color: "#d9a47c",
+export const tierData: Record<Tier, TierData> = {
+	[Tier.Bronze]: {
+		label: "Bronze",
+		color: "#cd7f32",
 		price: 500,
-		benefits: [
-			"Logo on our website",
-			"Shoutout on our Instagram",
-		],
-		desc: "Help support the team"
+		benefits: ["Shoutout on our instagram", "Logo on our website"],
+		desc: "Help support the team.",
 	},
-	{
-		level: "Silver",
-		color: "#bdbdbd",
+	[Tier.Silver]: {
+		label: "Silver",
+		color: "#c0c0c0",
 		price: 1000,
 		benefits: [
 			"All Bronze benifits",
 			"Name/logo on our portfolio",
 			"Small logo on our uniform",
 		],
-		desc: "Help support the team"
+		desc: "Help support the team",
 	},
-	{
-		level: "Gold",
-		color: "#ffd173",
+	[Tier.Gold]: {
+		label: "Gold",
+		color: "#d4af37",
 		price: 2000,
 		benefits: [
 			"All Silver Benifits",
@@ -101,6 +98,6 @@ export const tiers : Tier[] = [
 			"Logo on our robot",
 			"Recognition during competitions",
 		],
-		desc: "Help support the team"
+		desc: "Our most premium option.",
 	},
-]
+};

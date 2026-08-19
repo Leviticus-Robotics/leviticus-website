@@ -1,6 +1,7 @@
 ---
-import { sponsors, tiers } from "../data/team";
+import { sponsors, tierData } from "../data/team";
 import SponsorCard from "../components/SponsorCard.astro";
+import SponsorTierCard from "../components/SponsorTierCard.astro";
 import Actions from "../components/ui/Actions.astro";
 import ButtonLink from "../components/ui/ButtonLink.astro";
 import Card from "../components/ui/Card.astro";
@@ -10,6 +11,16 @@ import Lead from "../components/ui/Lead.astro";
 import PageShell from "../components/ui/PageShell.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Tier } from "../types/content";
+
+const tierOrder = [Tier.Gold, Tier.Silver, Tier.Bronze];
+const sponsorTiers = tierOrder
+	.map((tier) => ({
+		tier,
+		data: tierData[tier],
+		sponsors: sponsors.filter((sponsor) => sponsor.tier === tier),
+	}))
+	.filter(({ sponsors }) => sponsors.length > 0);
 ---
 
 <BaseLayout
@@ -32,13 +43,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					</ButtonLink>
 				</Actions>
 			</SectionHeader>
+			<section class="mb-16" aria-labelledby="sponsorship-tiers-title">
+				<h2 id="sponsorship-tiers-title" class="mb-6 font-sans text-3xl font-extrabold">
+					Sponsorship tiers
+				</h2>
+				<Grid>
+					{tierOrder.map((tier) => <SponsorTierCard tier={tierData[tier]} />)}
+				</Grid>
+			</section>
 			{
-				sponsors.length > 0 ? (
-					<Grid>
-						{
-							sponsors.map((sponsor) => <SponsorCard sponsor={sponsor} />)
-						}
-					</Grid>
+				sponsorTiers.length > 0 ? (
+					<div class="space-y-12">
+						{sponsorTiers.map(({ tier, data, sponsors: tierSponsors }) => (
+							<section aria-labelledby={`tier-${tier}`}>
+								<h2
+									id={`tier-${tier}`}
+									class="font-sans text-3xl font-extrabold"
+									style={`color: ${data.color}`}
+								>
+									{data.label}
+								</h2>
+								<hr class="mt-3 mb-6 border-0 border-t border-site-line" />
+								<Grid>
+									{tierSponsors.map((sponsor) => <SponsorCard sponsor={sponsor} />)}
+								</Grid>
+							</section>
+						))}
+					</div>
 				) : (
 					<Card>
 						<h2 class="mb-3 text-2xl">Become an inaugural sponsor</h2>
