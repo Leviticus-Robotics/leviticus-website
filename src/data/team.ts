@@ -72,31 +72,32 @@ export const sponsors: Sponsor[] = [
 export const tiers : Tier[] = [
 	{
 		level: "Bronze",
+		color: "#d9a47c",
 		price: 500,
 		benefits: [
-			"Shoutout on our instagram",
 			"Logo on our website"
 		],
 		desc: "Help support the team"
 	},
 	{
 		level: "Silver",
+		color: "#bdbdbd",
 		price: 1000,
 		benefits: [
-			"Logo on our robot",
-			"Logo on our uniform",
-			"Logo on our website",
+			"All of the above tiers, and...",
 			"Shoutout on our instagram",
 		],
 		desc: "Help support the team"
 	},
 	{
 		level: "Gold",
+		color: "#ffd173",
 		price: 2000,
 		benefits: [
+			"All of the above tiers, and...",
+			"Shoutout on our instagram",
 			"Logo on our robot",
 			"Logo on our uniform",
-			"Shoutout on our instagram",
 		],
 		desc: "Help support the team"
 	},

@@ -44,6 +44,7 @@ export type RobotPhoto = Omit<
 
 export interface Tier {
 	level: string,
+	color: string,
 	price: number,
 	benefits: string[],
 	desc: string

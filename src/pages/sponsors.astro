@@ -49,13 +49,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					</Card>
 				)
 			}
+			<h1 class="text-4xl">Sponser Tiers</h1>
+			<p>Sponser us with for increasing amounts of recognition</p>
 			{
 				tiers.map(tier => (
 					<Card>
-						<h2 class="mb-3 text-2xl">{tier.level}</h2>
+						<h2 class="mb-3 text-2xl" style={`color: ${tier.color};`}>{tier.level}</h2>
 						<p>{tier.desc}</p>
 						<h3 class="mb-3 text-2xl"> Benefits </h3>
-						<ul>
+						<ul style="list-style-type: disc; list-style-position: inside; list-style-image: none;">
 							{
 								tier.benefits.map(x => (<li>{x}</li>))
 							}
