@@ -13,6 +13,7 @@ export interface Sponsor {
 	name: string;
 	url: string;
 	logo: SvgComponent;
+	tier: Tier;
 }
 
 export interface NavLink {
@@ -40,3 +41,17 @@ export type RobotPhoto = Omit<
 	LightboxPhoto,
 	"thumbnail" | "thumbnailSrcset" | "thumbnailSizes" | "label"
 >;
+
+export enum Tier {
+	Gold,
+	Silver,
+	Bronze,
+}
+
+export interface TierData {
+	label: string;
+	color: string;
+	price: number;
+	benefits: string[];
+	desc: string;
+}

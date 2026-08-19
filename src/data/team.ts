@@ -1,4 +1,4 @@
-import type { Sponsor, TeamMember } from "../types/content";
+import { Tier, type Sponsor, type TeamMember, type TierData } from "../types/content";
 import fabworksLogo from "../assets/sponsors/fabworks.svg";
 
 export const teamMembers: TeamMember[] = [
@@ -65,5 +65,39 @@ export const sponsors: Sponsor[] = [
 		name: "Fabworks",
 		url: "https://www.fabworks.com/",
 		logo: fabworksLogo,
+		tier: Tier.Gold,
 	},
 ];
+
+export const tierData: Record<Tier, TierData> = {
+	[Tier.Bronze]: {
+		label: "Bronze",
+		color: "#cd7f32",
+		price: 500,
+		benefits: ["Shoutout on our instagram", "Logo on our website"],
+		desc: "Help support the team.",
+	},
+	[Tier.Silver]: {
+		label: "Silver",
+		color: "#c0c0c0",
+		price: 1000,
+		benefits: [
+			"Logo on our robot",
+			"Logo on our uniform",
+			"Logo on our website",
+			"Shoutout on our instagram",
+		],
+		desc: "Help support the team",
+	},
+	[Tier.Gold]: {
+		label: "Gold",
+		color: "#d4af37",
+		price: 2000,
+		benefits: [
+			"Logo on our robot",
+			"Logo on our uniform",
+			"Shoutout on our instagram",
+		],
+		desc: "Our most premium option.",
+	},
+};
