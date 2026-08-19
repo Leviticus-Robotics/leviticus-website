@@ -78,7 +78,7 @@ export const tierData: Record<Tier, TierData> = {
 			"Name/logo on our website",
 			"Instagram post"
 		],
-		desc: "Help support the team.",
+		desc: "",
 	},
 	[Tier.Silver]: {
 		label: "Silver",
@@ -89,7 +89,7 @@ export const tierData: Record<Tier, TierData> = {
 			"Name/logo on our portfolio",
 			"Small logo on our uniform",
 		],
-		desc: "You get a few more benefits!",
+		desc: "",
 	},
 	[Tier.Gold]: {
 		label: "Gold",
@@ -101,6 +101,6 @@ export const tierData: Record<Tier, TierData> = {
 			"Big logo on our uniform",
 			"Shoutout out at competitions",
 		],
-		desc: "Our most premium option.",
+		desc: "",
 	},
 };
