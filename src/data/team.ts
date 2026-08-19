@@ -65,11 +65,20 @@ export const sponsors: Sponsor[] = [
 		name: "Fabworks",
 		url: "https://www.fabworks.com/",
 		logo: fabworksLogo,
-		tier: Tier.Gold,
+		tier: Tier.None,
 	},
 ];
 
 export const tierData: Record<Tier, TierData> = {
+	[Tier.None]: {
+		label: "Our Sponsers",
+		color: "#000000",
+		price: 0,
+		benefits: [
+			"Support the team"
+		],
+		desc: "",
+	},
 	[Tier.Bronze]: {
 		label: "Bronze",
 		color: "#cd7f32",

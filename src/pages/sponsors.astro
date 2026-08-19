@@ -14,7 +14,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Tier } from "../types/content";
 
 const tierOrder = [Tier.Bronze, Tier.Silver, Tier.Gold];
-const sponsorTiers = tierOrder
+const tierOrderSponsorList = [Tier.None, Tier.Bronze, Tier.Silver, Tier.Gold];
+const sponsorTiers = tierOrderSponsorList
 	.map((tier) => ({
 		tier,
 		data: tierData[tier],

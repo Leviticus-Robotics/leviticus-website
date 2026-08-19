@@ -46,6 +46,7 @@ export enum Tier {
 	Gold,
 	Silver,
 	Bronze,
+	None,
 }
 
 export interface TierData {
