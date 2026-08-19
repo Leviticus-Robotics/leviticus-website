@@ -74,7 +74,10 @@ export const tierData: Record<Tier, TierData> = {
 		label: "Bronze",
 		color: "#cd7f32",
 		price: 500,
-		benefits: ["Shoutout on our instagram", "Logo on our website"],
+		benefits: [
+			"Name/logo on our website",
+			"Instagram post"
+		],
 		desc: "Help support the team.",
 	},
 	[Tier.Silver]: {
@@ -86,17 +89,17 @@ export const tierData: Record<Tier, TierData> = {
 			"Name/logo on our portfolio",
 			"Small logo on our uniform",
 		],
-		desc: "Help support the team",
+		desc: "You get a few more benefits!",
 	},
 	[Tier.Gold]: {
 		label: "Gold",
 		color: "#d4af37",
 		price: 2000,
 		benefits: [
-			"All Silver Benifits",
-			"Big logo on uniform",
+			"All Silver Benefits",
 			"Logo on our robot",
-			"Recognition during competitions",
+			"Big logo on our uniform",
+			"Shoutout out at competitions",
 		],
 		desc: "Our most premium option.",
 	},
