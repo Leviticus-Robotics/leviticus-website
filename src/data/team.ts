@@ -85,9 +85,9 @@ export const tierData: Record<Tier, TierData> = {
 		color: "#c0c0c0",
 		price: 1000,
 		benefits: [
-			"All Bronze benefits",
-			"Name/logo on portfolio",
-			"Small logo on uniform",
+			"All Bronze benifits",
+			"Name/logo on our portfolio",
+			"Small logo on our uniform",
 		],
 		desc: "You get a few more benefits!",
 	},
