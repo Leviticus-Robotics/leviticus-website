@@ -7,6 +7,7 @@
 		label: string;
 		previousLabel?: string;
 		nextLabel?: string;
+		showArrows?: boolean;
 		step?: number;
 	}
 
@@ -16,6 +17,7 @@
 		label,
 		previousLabel = "Previous items",
 		nextLabel = "Next items",
+		showArrows = true,
 		step = 0.86,
 	}: Props = $props();
 	let viewport: HTMLDivElement;
@@ -52,52 +54,54 @@
 </script>
 
 <div data-carousel={id}>
-	<div class="mb-4 flex justify-end gap-2" role="group" aria-label={`${label} controls`}>
-		<button
-			class="inline-grid size-11 place-items-center rounded-full border border-brand-blue/20 bg-white text-brand-blue shadow-sm transition hover:border-brand-blue/40 hover:bg-brand-blue hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-brand-blue disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-blue/20 disabled:hover:bg-white disabled:hover:text-brand-blue"
-			type="button"
-			aria-label={previousLabel}
-			aria-controls={`${id}-viewport`}
-			disabled={!canScrollPrevious}
-			onclick={() => scroll(-1)}
-		>
-			<svg
-				class="size-5"
-				aria-hidden="true"
-				focusable="false"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+	{#if showArrows}
+		<div class="mb-4 flex justify-end gap-2" role="group" aria-label={`${label} controls`}>
+			<button
+				class="inline-grid size-11 place-items-center rounded-full border border-brand-blue/20 bg-white text-brand-blue shadow-sm transition hover:border-brand-blue/40 hover:bg-brand-blue hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-brand-blue disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-blue/20 disabled:hover:bg-white disabled:hover:text-brand-blue"
+				type="button"
+				aria-label={previousLabel}
+				aria-controls={`${id}-viewport`}
+				disabled={!canScrollPrevious}
+				onclick={() => scroll(-1)}
 			>
-				<path d="m15 18-6-6 6-6"></path>
-			</svg>
-		</button>
-		<button
-			class="inline-grid size-11 place-items-center rounded-full border border-brand-blue/20 bg-white text-brand-blue shadow-sm transition hover:border-brand-blue/40 hover:bg-brand-blue hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-brand-blue disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-blue/20 disabled:hover:bg-white disabled:hover:text-brand-blue"
-			type="button"
-			aria-label={nextLabel}
-			aria-controls={`${id}-viewport`}
-			disabled={!canScrollNext}
-			onclick={() => scroll(1)}
-		>
-			<svg
-				class="size-5"
-				aria-hidden="true"
-				focusable="false"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				<svg
+					class="size-5"
+					aria-hidden="true"
+					focusable="false"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="m15 18-6-6 6-6"></path>
+				</svg>
+			</button>
+			<button
+				class="inline-grid size-11 place-items-center rounded-full border border-brand-blue/20 bg-white text-brand-blue shadow-sm transition hover:border-brand-blue/40 hover:bg-brand-blue hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-brand-blue disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-blue/20 disabled:hover:bg-white disabled:hover:text-brand-blue"
+				type="button"
+				aria-label={nextLabel}
+				aria-controls={`${id}-viewport`}
+				disabled={!canScrollNext}
+				onclick={() => scroll(1)}
 			>
-				<path d="m9 18 6-6-6-6"></path>
-			</svg>
-		</button>
-	</div>
+				<svg
+					class="size-5"
+					aria-hidden="true"
+					focusable="false"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="m9 18 6-6-6-6"></path>
+				</svg>
+			</button>
+		</div>
+	{/if}
 	<div
 		bind:this={viewport}
 		id={`${id}-viewport`}

@@ -38,4 +38,16 @@ describe("Carousel", () => {
 		expect(firstScroll).toHaveBeenCalledWith({ left: 430, behavior: "smooth" });
 		expect(secondScroll).not.toHaveBeenCalled();
 	});
+
+	it("can hide its arrow controls", () => {
+		render(Carousel, {
+			children,
+			id: "without-arrows",
+			label: "Carousel without arrows",
+			showArrows: false,
+		});
+
+		expect(document.querySelector("[aria-label='Carousel without arrows controls']")).toBeNull();
+		expect(document.querySelector("#without-arrows-viewport")).toBeTruthy();
+	});
 });

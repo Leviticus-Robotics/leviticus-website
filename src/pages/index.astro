@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import { getImage, Picture } from "astro:assets";
-import team from "../assets/team.jpg";
+import team from "../assets/team.jpeg";
 import PhotoCarousel from "../components/PhotoCarousel.svelte";
 import Actions from "../components/ui/Actions.astro";
 import BandSection from "../components/ui/BandSection.astro";
@@ -63,23 +63,23 @@ const optimizedRobotPhotos = await Promise.all(
 			<Eyebrow>FTC Team 36099</Eyebrow>
 			<DisplayHeading id="home-title">Leviticus</DisplayHeading>
 			<Lead>
-				A student-led robotics team building competitive machines, practical engineering
-				skills, and a stronger STEM community.
+				Our team strives to implement industry standards and develop team skills, while systematically documenting our progress and embodying Gracious Professionalism by competing at the highest level, helping others, and spreading STEM throughout our community.
 			</Lead>
 				<Actions>
 					<ButtonLink href={sitePath("/meet-our-team/")}>Meet the team</ButtonLink>
-					<ButtonLink href={sitePath("/sponsors/")} variant="secondary">
+					<ButtonLink href={sitePath("/sponsors/")}>
 						Support Leviticus
 					</ButtonLink>
+					<ButtonLink href={sitePath("/contact/")}>Contact us</ButtonLink>
 				</Actions>
 		</div>
 		<figure
 			class="m-0 overflow-hidden rounded-lg border border-site-line bg-site-ink shadow-[0_20px_55px_color-mix(in_srgb,var(--color-brand-purple-strong)_15%,transparent)]"
 		>
 			<Picture
-				class="aspect-4/3 w-full object-cover object-[58%_50%]"
+				class="h-auto w-full"
 				src={team}
-				alt="From left to right: Ben, Noah, Matthew, Daniel, Andrew"
+				alt="Members of FTC Team 36099 Leviticus posing together outdoors"
 				formats={["avif", "webp"]}
 				widths={[378, 556, 756, 1112]}
 				sizes="(max-width: 840px) calc(100vw - 2rem), 44vw"
@@ -89,26 +89,34 @@ const optimizedRobotPhotos = await Promise.all(
 		</figure>
 	</HeroSection>
 
-	<BandSection aria-labelledby="robot-gallery-title" class="py-14">
-		<div class="mb-4 flex items-end justify-between gap-6 max-[640px]:items-start">
-			<SectionHeader class="mb-0">
-				<!-- <Eyebrow>Robot photos</Eyebrow> -->
-				<SectionHeading id="robot-gallery-title">Build gallery</SectionHeading>
-				<Lead>The robot components we've designed.</Lead>
-			</SectionHeader>
+	<BandSection aria-labelledby="what-is-ftc-title" class="py-14">
+		<div class="mb-14">
+			<SectionHeading id="what-is-ftc-title">What do we do?</SectionHeading>
+			<p class="max-w-220 text-lg leading-relaxed text-site-muted">
+				We are a high school robotics team competing in FTC, an international robotics competition organized by FIRST. Each member learns engineering and programming skills and applies them practically.  At the core of FTC is Gracious Professionalism, encouraging fierce competition while fostering mutual respect and kindness.  We not only hope to build the best robot possible but also inspire others through community outreach. Through aligning with FIRST's core values and engaging with the community, we hope not just to learn but to give back in return.
+			</p>
 		</div>
-		<PhotoCarousel
-			photos={optimizedRobotPhotos}
-			id="robot-gallery"
-			label="Robot gallery"
-			lightboxLabel="Robot detail"
-			previousLabel="Previous robot photo"
-			nextLabel="Next robot photo"
-			client:visible
-		/>
+		<section aria-labelledby="robot-gallery-title">
+			<div class="mb-4 flex items-end justify-between gap-6 max-[640px]:items-start">
+				<SectionHeader class="mb-0">
+					<!-- <Eyebrow>Robot photos</Eyebrow> -->
+					<SectionHeading id="robot-gallery-title">Build gallery</SectionHeading>
+					<Lead>The robot components we've designed.</Lead>
+				</SectionHeader>
+			</div>
+			<PhotoCarousel
+				photos={optimizedRobotPhotos}
+				id="robot-gallery"
+				label="Robot gallery"
+				lightboxLabel="Robot detail"
+				previousLabel="Previous robot photo"
+				nextLabel="Next robot photo"
+				showArrows={false}
+				client:visible
+			/>
+		</section>
 	</BandSection>
-
-	<BandSection aria-labelledby="snapshot-title">
+	<!-- <BandSection aria-labelledby="snapshot-title">
 		<SectionHeader>
 			<SectionHeading id="snapshot-title">Explore</SectionHeading>
 		</SectionHeader>
@@ -120,14 +128,10 @@ const optimizedRobotPhotos = await Promise.all(
 					Premiere Events experience.
 				</p>
 			</FeatureCard>
-			<FeatureCard href={sitePath("/mission-statement/")}>
-				<h3 class="text-xl leading-tight">Mission Statement</h3>
-				<p>Why Leviticus exists and the goals guiding the team.</p>
-			</FeatureCard>
 			<FeatureCard href={sitePath("/contact/")}>
 				<h3 class="text-xl leading-tight">Contact</h3>
 				<p>Email, phone, and social links for families, sponsors, and community partners.</p>
 			</FeatureCard>
 		</Grid>
-	</BandSection>
+	</BandSection> -->
 </BaseLayout>

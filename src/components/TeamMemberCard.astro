@@ -14,12 +14,12 @@ const initials = member.name
 	.map((part) => part[0])
 	.join("");
 const memberImages = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/assets/members/*.{jpeg,jpg,png,gif}",
+	"/src/assets/members_official/*.{jpeg,jpg,png,gif}",
 );
 
 if (member.photo && !memberImages[member.photo]) {
 	throw new Error(
-		`"${member.photo}" does not exist in glob: "src/assets/members/*.{jpeg,jpg,png,gif}"`,
+		`"${member.photo}" does not exist in glob: "src/assets/members_official/*.{jpeg,jpg,png,gif}"`,
 	);
 }
 

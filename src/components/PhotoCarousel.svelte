@@ -10,6 +10,7 @@
 		lightboxLabel?: string;
 		previousLabel?: string;
 		nextLabel?: string;
+		showArrows?: boolean;
 	}
 
 	let {
@@ -19,6 +20,7 @@
 		lightboxLabel = "Photo detail",
 		previousLabel = "Previous photo",
 		nextLabel = "Next photo",
+		showArrows = true,
 	}: Props = $props();
 	let lightbox: ReturnType<typeof PhotoLightbox>;
 
@@ -28,7 +30,7 @@
 	});
 </script>
 
-<Carousel {id} {label} {previousLabel} {nextLabel}>
+<Carousel {id} {label} {previousLabel} {nextLabel} {showArrows}>
 	{#each photos as photo, index}
 		<figure
 			class="m-0 min-w-[calc((100%-4rem)/5)] snap-start overflow-hidden rounded-md border border-brand-blue/15 bg-white shadow-sm max-[980px]:min-w-[calc((100%-2rem)/3)] max-[640px]:min-w-[78vw]"
