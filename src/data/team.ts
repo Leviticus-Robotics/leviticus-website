@@ -51,7 +51,7 @@ export const teamMembers: TeamMember[] = [
 		photoCrop: "50% 10%",
 	},
 	{
-		name: "Pax",
+		name: "Pax Grosjean",
 		role: "Business",
 		bio: "Pax is a senior at The King's Academy, and this is his first time being on the Business team of an FTC team. He enjoys finding ways to think about problems from different perspectives. In his free time, Pax likes to play tennis, do toy photography, and fish.",
 		experiences: [],
